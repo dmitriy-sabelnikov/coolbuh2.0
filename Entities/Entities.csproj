@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2BB692CE-74A3-45A1-9AB0-339C387B08E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Entities</RootNamespace>
+    <AssemblyName>Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ACS.cs" />
+    <Compile Include="DFCt.cs" />
+    <Compile Include="AddAccr.cs" />
+    <Compile Include="AddPayment.cs" />
+    <Compile Include="CardSpecExp.cs" />
+    <Compile Include="CardStatus.cs" />
+    <Compile Include="Child.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="DFRec.cs" />
+    <Compile Include="Disability.cs" />
+    <Compile Include="ExportDFRec.cs" />
+    <Compile Include="ExportUST6.cs" />
+    <Compile Include="ExportUST7.cs" />
+    <Compile Include="IncTax.cs" />
+    <Compile Include="LawContract.cs" />
+    <Compile Include="Payment.cs" />
+    <Compile Include="RefLivWage.cs" />
+    <Compile Include="RefMinSalary.cs" />
+    <Compile Include="RefOthAllwnc.cs" />
+    <Compile Include="RefGradeAllwnc.cs" />
+    <Compile Include="PersCard.cs" />
+    <Compile Include="RefAdm.cs" />
+    <Compile Include="RefDep.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefExpAllwnc.cs" />
+    <Compile Include="RefPensAllwnc.cs" />
+    <Compile Include="RefSocBenefit.cs" />
+    <Compile Include="RefSpecExp.cs" />
+    <Compile Include="RefTypeAddAccr.cs" />
+    <Compile Include="RefTypeAddPayment.cs" />
+    <Compile Include="Report.cs" />
+    <Compile Include="RPR_AccrConsolidate.cs" />
+    <Compile Include="RPR_AccrStatement.cs" />
+    <Compile Include="RPR_AddPaymentStatement.cs" />
+    <Compile Include="RPR_Cnsldt_Contract.cs" />
+    <Compile Include="RPR_Cnsldt_SickList.cs" />
+    <Compile Include="RPR_PaymentAccr.cs" />
+    <Compile Include="RPR_PaymentStatement.cs" />
+    <Compile Include="RPR_SalaryList.cs" />
+    <Compile Include="RPR_SalBalance.cs" />
+    <Compile Include="RPR_VocSickLaw.cs" />
+    <Compile Include="Salary.cs" />
+    <Compile Include="SalBalance.cs" />
+    <Compile Include="RPR_SalStatement.cs" />
+    <Compile Include="Setup.cs" />
+    <Compile Include="SickList.cs" />
+    <Compile Include="TaxRelief.cs" />
+    <Compile Include="UST6.cs" />
+    <Compile Include="UST7.cs" />
+    <Compile Include="USTCt.cs" />
+    <Compile Include="Vocation.cs" />
+    <Compile Include="v_ACS.cs" />
+    <Compile Include="v_AddAccr.cs" />
+    <Compile Include="v_AddPayment.cs" />
+    <Compile Include="v_CardSpecExp.cs" />
+    <Compile Include="v_CardStatus.cs" />
+    <Compile Include="v_DFCt.cs" />
+    <Compile Include="v_IncTax.cs" />
+    <Compile Include="v_LawContract.cs" />
+    <Compile Include="v_Payment.cs" />
+    <Compile Include="v_RefAdm.cs" />
+    <Compile Include="v_RefExpAllwnc.cs" />
+    <Compile Include="v_RefGradeAllwnc.cs" />
+    <Compile Include="v_Dep.cs" />
+    <Compile Include="v_RefOthAllwnc.cs" />
+    <Compile Include="v_RefPensAllwnc.cs" />
+    <Compile Include="v_RefTypeAddAccr.cs" />
+    <Compile Include="v_Salary.cs" />
+    <Compile Include="v_SickList.cs" />
+    <Compile Include="v_TypeAddPayment.cs" />
+    <Compile Include="v_TypePayment.cs" />
+    <Compile Include="v_Vocation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

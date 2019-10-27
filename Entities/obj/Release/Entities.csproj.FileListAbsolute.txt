@@ -1,0 +1,12 @@
+D:\coolbuh2.0\coolbuh2.0\Entities\bin\Release\Entities.dll.config
+D:\coolbuh2.0\coolbuh2.0\Entities\bin\Release\Entities.dll
+D:\coolbuh2.0\coolbuh2.0\Entities\bin\Release\Entities.pdb
+D:\coolbuh2.0\coolbuh2.0\Entities\obj\Release\Entities.dll
+D:\coolbuh2.0\coolbuh2.0\Entities\obj\Release\Entities.pdb
+D:\coolbuh2.0\coolbuh2.0\Entities\obj\Release\Entities.csprojResolveAssemblyReference.cache
+D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\bin\Release\Entities.dll.config
+D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\bin\Release\Entities.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\bin\Release\Entities.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\obj\Release\Entities.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\obj\Release\Entities.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\obj\Release\Entities.csprojResolveAssemblyReference.cache

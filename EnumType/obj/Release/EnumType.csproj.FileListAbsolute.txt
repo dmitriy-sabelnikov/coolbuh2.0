@@ -1,0 +1,10 @@
+D:\coolbuh2.0\coolbuh2.0\EnumType\bin\Release\EnumType.dll
+D:\coolbuh2.0\coolbuh2.0\EnumType\bin\Release\EnumType.pdb
+D:\coolbuh2.0\coolbuh2.0\EnumType\obj\Release\EnumType.dll
+D:\coolbuh2.0\coolbuh2.0\EnumType\obj\Release\EnumType.pdb
+D:\coolbuh2.0\coolbuh2.0\EnumType\obj\Release\EnumType.csprojResolveAssemblyReference.cache
+D:\Исходники\coolbuh2.0\coolbuh2.0\EnumType\bin\Release\EnumType.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\EnumType\bin\Release\EnumType.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\EnumType\obj\Release\EnumType.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\EnumType\obj\Release\EnumType.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\EnumType\obj\Release\EnumType.csprojResolveAssemblyReference.cache

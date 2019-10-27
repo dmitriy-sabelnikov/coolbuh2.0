@@ -1,0 +1,12 @@
+D:\coolbuh2.0\coolbuh2.0\Interfaces\bin\Debug\Interfaces.dll
+D:\coolbuh2.0\coolbuh2.0\Interfaces\bin\Debug\Interfaces.pdb
+D:\coolbuh2.0\coolbuh2.0\Interfaces\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+D:\coolbuh2.0\coolbuh2.0\Interfaces\obj\Debug\Interfaces.dll
+D:\coolbuh2.0\coolbuh2.0\Interfaces\obj\Debug\Interfaces.pdb
+D:\coolbuh2.0\coolbuh2.0\Interfaces\obj\Debug\Interfaces.csprojResolveAssemblyReference.cache
+D:\Исходники\coolbuh2.0\coolbuh2.0\Interfaces\bin\Debug\Interfaces.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\Interfaces\bin\Debug\Interfaces.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\Interfaces\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\Interfaces\obj\Debug\Interfaces.csprojResolveAssemblyReference.cache
+D:\Исходники\coolbuh2.0\coolbuh2.0\Interfaces\obj\Debug\Interfaces.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\Interfaces\obj\Debug\Interfaces.pdb

@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{41FC06CD-44D9-4548-8972-EF3692793B50}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Reports</RootNamespace>
+    <AssemblyName>Reports</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Types, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccrConsolidate.cs" />
+    <Compile Include="AccrStatement.cs" />
+    <Compile Include="ConsolidateReport.cs" />
+    <Compile Include="fmChoosePath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmChoosePath.Designer.cs">
+      <DependentUpon>fmChoosePath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmReportViewer.Designer.cs">
+      <DependentUpon>fmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentStatement.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ReportManager.cs" />
+    <Compile Include="SalBalanceReport.cs" />
+    <Compile Include="SalaryListReport.cs" />
+    <Compile Include="SalStatement.cs" />
+    <Compile Include="StartFormReport\fmAccrConsolidate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmAccrConsolidate.Designer.cs">
+      <DependentUpon>fmAccrConsolidate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmAccrStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmAccrStatement.Designer.cs">
+      <DependentUpon>fmAccrStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmConsolidateReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmConsolidateReport.Designer.cs">
+      <DependentUpon>fmConsolidateReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmTypeAddPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmTypeAddPayment.Designer.cs">
+      <DependentUpon>fmTypeAddPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmDepartment.Designer.cs">
+      <DependentUpon>fmDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmPaymentStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmPaymentStatement.Designer.cs">
+      <DependentUpon>fmPaymentStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmSalaryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmSalaryList.Designer.cs">
+      <DependentUpon>fmSalaryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmSalBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmSalBalance.Designer.cs">
+      <DependentUpon>fmSalBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmSalStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmSalStatement.Designer.cs">
+      <DependentUpon>fmSalStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartFormReport\fmTypePayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartFormReport\fmTypePayment.Designer.cs">
+      <DependentUpon>fmTypePayment.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="fmChoosePath.resx">
+      <DependentUpon>fmChoosePath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmReportViewer.resx">
+      <DependentUpon>fmReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rdlc\AccrConsolidate.rdlc" />
+    <EmbeddedResource Include="Rdlc\AccrStatement.rdlc" />
+    <EmbeddedResource Include="Rdlc\PaymentStatement.rdlc" />
+    <EmbeddedResource Include="Rdlc\SalaryList.rdlc" />
+    <EmbeddedResource Include="Rdlc\SalBalance.rdlc" />
+    <EmbeddedResource Include="Rdlc\SalStatement.rdlc" />
+    <EmbeddedResource Include="Rdlc\SubReportPaymentAccr.rdlc" />
+    <EmbeddedResource Include="Rdlc\SubReportTaxes.rdlc" />
+    <EmbeddedResource Include="Rdlc\SubReportVocSickLaw.rdlc" />
+    <EmbeddedResource Include="StartFormReport\fmAccrConsolidate.resx">
+      <DependentUpon>fmAccrConsolidate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmAccrStatement.resx">
+      <DependentUpon>fmAccrStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmConsolidateReport.resx">
+      <DependentUpon>fmConsolidateReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmTypeAddPayment.resx">
+      <DependentUpon>fmTypeAddPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmDepartment.resx">
+      <DependentUpon>fmDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmPaymentStatement.resx">
+      <DependentUpon>fmPaymentStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmSalaryList.resx">
+      <DependentUpon>fmSalaryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmSalBalance.resx">
+      <DependentUpon>fmSalBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmSalStatement.resx">
+      <DependentUpon>fmSalStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartFormReport\fmTypePayment.resx">
+      <DependentUpon>fmTypePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\Entities.ACS.datasource" />
+    <None Include="Properties\DataSources\Entities.Report.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_AccrConsolidate.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_AccrStatement.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_AddPaymentStatement.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_Cnsldt_Contract.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_Cnsldt_SickList.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_PaymentAccr.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_PaymentStatement.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_SalaryList.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_SalBalance.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_SalStatement.datasource" />
+    <None Include="Properties\DataSources\Entities.RPR_VocSickLaw.datasource" />
+    <None Include="Properties\DataSources\Entities.SalBalance.datasource" />
+    <None Include="Properties\DataSources\Entities.v_ACS.datasource" />
+    <None Include="Rdlc\Consolidate.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\Entities.AddAccr.datasource" />
+    <None Include="Properties\DataSources\Entities.AddPayment.datasource" />
+    <None Include="Properties\DataSources\Entities.CardSpecExp.datasource" />
+    <None Include="Properties\DataSources\Entities.CardStatus.datasource" />
+    <None Include="Properties\DataSources\Entities.Child.datasource" />
+    <None Include="Properties\DataSources\Entities.Company.datasource" />
+    <None Include="Properties\DataSources\Entities.DFCt.datasource" />
+    <None Include="Properties\DataSources\Entities.DFRec.datasource" />
+    <None Include="Properties\DataSources\Entities.Disability.datasource" />
+    <None Include="Properties\DataSources\Entities.ExportDFRec.datasource" />
+    <None Include="Properties\DataSources\Entities.ExportUST6.datasource" />
+    <None Include="Properties\DataSources\Entities.ExportUST7.datasource" />
+    <None Include="Properties\DataSources\Entities.IncTax.datasource" />
+    <None Include="Properties\DataSources\Entities.LawContract.datasource" />
+    <None Include="Properties\DataSources\Entities.Payment.datasource" />
+    <None Include="Properties\DataSources\Entities.PersCard.datasource" />
+    <None Include="Properties\DataSources\Entities.PPR_Consolidate.datasource" />
+    <None Include="Properties\DataSources\Entities.RefAdm.datasource" />
+    <None Include="Properties\DataSources\Entities.RefDep.datasource" />
+    <None Include="Properties\DataSources\Entities.RefExpAllwnc.datasource" />
+    <None Include="Properties\DataSources\Entities.RefGradeAllwnc.datasource" />
+    <None Include="Properties\DataSources\Entities.RefLivWage.datasource" />
+    <None Include="Properties\DataSources\Entities.RefMinSalary.datasource" />
+    <None Include="Properties\DataSources\Entities.RefOthAllwnc.datasource" />
+    <None Include="Properties\DataSources\Entities.RefPensAllwnc.datasource" />
+    <None Include="Properties\DataSources\Entities.RefSocBenefit.datasource" />
+    <None Include="Properties\DataSources\Entities.RefSpecExp.datasource" />
+    <None Include="Properties\DataSources\Entities.RefTypeAddAccr.datasource" />
+    <None Include="Properties\DataSources\Entities.RefTypeAddPayment.datasource" />
+    <None Include="Properties\DataSources\Entities.rpr_law.datasource" />
+    <None Include="Properties\DataSources\Entities.Salary.datasource" />
+    <None Include="Properties\DataSources\Entities.SetupApp.datasource" />
+    <None Include="Properties\DataSources\Entities.SickList.datasource" />
+    <None Include="Properties\DataSources\Entities.TaxRelief.datasource" />
+    <None Include="Properties\DataSources\Entities.UST6.datasource" />
+    <None Include="Properties\DataSources\Entities.UST7.datasource" />
+    <None Include="Properties\DataSources\Entities.USTCt.datasource" />
+    <None Include="Properties\DataSources\Entities.Vocation.datasource" />
+    <None Include="Properties\DataSources\Entities.v_AddAccr.datasource" />
+    <None Include="Properties\DataSources\Entities.v_AddPayment.datasource" />
+    <None Include="Properties\DataSources\Entities.v_CardSpecExp.datasource" />
+    <None Include="Properties\DataSources\Entities.v_CardStatus.datasource" />
+    <None Include="Properties\DataSources\Entities.v_Dep.datasource" />
+    <None Include="Properties\DataSources\Entities.v_DFCt.datasource" />
+    <None Include="Properties\DataSources\Entities.v_IncTax.datasource" />
+    <None Include="Properties\DataSources\Entities.v_LawContract.datasource" />
+    <None Include="Properties\DataSources\Entities.v_Payment.datasource" />
+    <None Include="Properties\DataSources\Entities.v_RefAdm.datasource" />
+    <None Include="Properties\DataSources\Entities.v_RefExpAllwnc.datasource" />
+    <None Include="Properties\DataSources\Entities.v_RefGradeAllwnc.datasource" />
+    <None Include="Properties\DataSources\Entities.v_RefOthAllwnc.datasource" />
+    <None Include="Properties\DataSources\Entities.v_RefPensAllwnc.datasource" />
+    <None Include="Properties\DataSources\Entities.v_RefTypeAddAccr.datasource" />
+    <None Include="Properties\DataSources\Entities.v_Salary.datasource" />
+    <None Include="Properties\DataSources\Entities.v_SickList.datasource" />
+    <None Include="Properties\DataSources\Entities.v_TypeAddPayment.datasource" />
+    <None Include="Properties\DataSources\Entities.v_TypePayment.datasource" />
+    <None Include="Properties\DataSources\Entities.v_Vocation.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{f0c50993-7d83-47ee-8753-982d1332eac1}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{c3eeddd0-350e-4ed4-abd6-d5980dc9b64c}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{2bb692ce-74a3-45a1-9ab0-339c387b08e5}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnumType\EnumType.csproj">
+      <Project>{2df40902-efb1-4421-8d5c-29c35fa4528a}</Project>
+      <Name>EnumType</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{236e4b37-911b-4bb3-a7fa-e5e2e637dfc5}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFormExtensions\WinFormExtensions.csproj">
+      <Project>{41964a55-a06d-4cc5-b9e7-72297aeddaee}</Project>
+      <Name>WinFormExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy "$(ProjectDir)\Rdlc\*.rdlc" "$(SolutionDir)REP\" /F/Y</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
