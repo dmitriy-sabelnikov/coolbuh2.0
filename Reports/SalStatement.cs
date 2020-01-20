@@ -66,12 +66,13 @@ namespace Reports
                      SalBalance_EndSmByFirm = acs == null ? 0 : (acs.SalBalance_EndMonthSm > 0 ? acs.SalBalance_EndMonthSm : 0),
                      SalBalance_EndSmByCard = acs == null ? 0 : (acs.SalBalance_EndMonthSm < 0 ? -1 * acs.SalBalance_EndMonthSm : 0),
                      CashBox_Sm = acs == null ? 0 : acs.CashBox_Sm,
-                     Excerpt_Sm = acs == null ? 0 : acs.Excerpt_Sm,
-                     List_Sm = acs == null ? 0 : acs.list_Sm,
-                     InKindPay_Sm = acs == null ? 0 : acs.InKindPay_Sm,
+                     //Excerpt_Sm = acs == null ? 0 : acs.Excerpt_Sm,
+                     //List_Sm = acs == null ? 0 : acs.list_Sm,
+                     //InKindPay_Sm = acs == null ? 0 : acs.InKindPay_Sm,
                      AddPayment_Sm = acs == null ? 0 : acs.AddPayment_Sm,
+                     Military_Sm   = acs == null ? 0 : acs.Military_Sm,
                      Payment_TotalSm = acs == null ? 0 : ((acs.CardStatus_Type == (int)EnumCardStatus.Constant ? 0 : acs.Tax_Sm) +
-                       acs.CashBox_Sm + acs.Excerpt_Sm + acs.list_Sm + acs.InKindPay_Sm + acs.AddPayment_Sm + acs.Military_Sm + acs.Prof_Sm)
+                       acs.CashBox_Sm + /*acs.Excerpt_Sm + acs.list_Sm + acs.InKindPay_Sm*/ + acs.AddPayment_Sm + acs.Military_Sm + acs.Prof_Sm)
                  }
                  ).ToList();
             if (!isShowNullRec)

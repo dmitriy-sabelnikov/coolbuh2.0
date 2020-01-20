@@ -29,10 +29,11 @@ namespace Entities
         public decimal SalBalance_EndSmByFirm { get; set; }   //Сальдо на конец месяца по предприятию
         public decimal SalBalance_EndSmByCard { get; set; }   //Сальдо на конец месяца по работнику
         public decimal CashBox_Sm { get; set; }               //Касса 
-        public decimal Excerpt_Sm { get; set; }               //Виписка 
-        public decimal List_Sm { get; set; }                  //Список 
-        public decimal InKindPay_Sm { get; set; }             //Натуроплата 
+        //public decimal Excerpt_Sm { get; set; }               //Виписка 
+        //public decimal List_Sm { get; set; }                  //Список 
+        //public decimal InKindPay_Sm { get; set; }             //Натуроплата 
         public decimal AddPayment_Sm { get; set; }            //Додаткові виплати 
+        public decimal Military_Sm { get; set; }              //Военный сбор
         public decimal Payment_TotalSm { get; set; }          //Общая сумма выплат
     }
 }

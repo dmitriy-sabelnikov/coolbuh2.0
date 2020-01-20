@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.pnl1 = new System.Windows.Forms.Panel();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnl2 = new System.Windows.Forms.Panel();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbPassword = new System.Windows.Forms.TextBox();
             this.pnl1.SuspendLayout();
             this.pnl2.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +47,23 @@
             this.pnl1.Name = "pnl1";
             this.pnl1.Size = new System.Drawing.Size(387, 96);
             this.pnl1.TabIndex = 0;
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(171, 14);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(194, 22);
+            this.tbPassword.TabIndex = 1;
+            this.tbPassword.UseSystemPasswordChar = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Введіть пароль:";
             // 
             // pnl2
             // 
@@ -82,22 +99,6 @@
             this.btnCancel.Text = "Відміна";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Введіть пароль:";
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(171, 14);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(194, 22);
-            this.tbPassword.TabIndex = 1;
             // 
             // fmPassword
             // 
