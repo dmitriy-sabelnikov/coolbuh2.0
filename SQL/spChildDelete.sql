@@ -9,6 +9,8 @@ Create Procedure [dbo].[spChildDelete]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM Child
 	 WHERE (Child_Id = @inChild_Id or @inChild_Id = 0)

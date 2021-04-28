@@ -13,6 +13,8 @@ Create Procedure [dbo].[spRefGradeAllwncInsert]
     @outId                           int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into RefGradeAllwnc (RefGradeAllwnc_Cd, RefGradeAllwnc_Nm, RefGradeAllwnc_Pct, RefGradeAllwnc_Grade, RefGradeAllwnc_RefDep_Id, RefGradeAllwnc_Flg) 
 	      values (@inRefGradeAllwnc_Cd, @inRefGradeAllwnc_Nm, @inRefGradeAllwnc_Pct, @inRefGradeAllwnc_Grade, @inRefGradeAllwnc_RefDep_Id, @inRefGradeAllwnc_Flg);
     select @outId=coalesce(IDENT_CURRENT ('RefGradeAllwnc'),0);

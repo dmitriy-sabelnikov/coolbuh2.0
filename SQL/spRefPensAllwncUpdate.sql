@@ -11,6 +11,8 @@ Create Procedure [dbo].[spRefPensAllwncUpdate]
     @inRefPensAllwnc_Flg            int                         --дыруш
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE RefPensAllwnc SET
            RefPensAllwnc_Cd  = @inRefPensAllwnc_Cd,
            RefPensAllwnc_Nm  = @inRefPensAllwnc_Nm,

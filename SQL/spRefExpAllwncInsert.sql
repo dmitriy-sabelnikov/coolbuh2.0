@@ -14,6 +14,8 @@ Create Procedure [dbo].[spRefExpAllwncInsert]
         @outId                          int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into RefExpAllwnc (RefExpAllwnc_Cd, RefExpAllwnc_Nm, RefExpAllwnc_Year, RefExpAllwnc_Mech, RefExpAllwncMech_RefDep_Id, RefExpAllwnc_Oth, RefExpAllwnc_Flg) 
         values (@inRefExpAllwnc_Cd, @inRefExpAllwnc_Nm, @inRefExpAllwnc_Year, @inRefExpAllwnc_Mech, @inRefExpAllwncMech_RefDep_Id, @inRefExpAllwnc_Oth, @inRefExpAllwnc_Flg);
     select @outId=coalesce(IDENT_CURRENT ('RefExpAllwnc'),0);

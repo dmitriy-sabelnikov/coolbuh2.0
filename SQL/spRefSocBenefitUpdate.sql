@@ -11,6 +11,8 @@ Create Procedure [dbo].[spRefSocBenefitUpdate]
     @inRefSocBenefit_LimSm       numeric(16,2)
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE RefSocBenefit SET
      	   RefSocBenefit_PerBeg  = @inRefSocBenefit_PerBeg,
      	   RefSocBenefit_PerEnd  = @inRefSocBenefit_PerEnd,

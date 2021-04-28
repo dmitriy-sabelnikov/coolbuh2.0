@@ -11,6 +11,8 @@ Create Procedure [dbo].[spRefAdmInsert]
         @outId              int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into RefAdm (RefAdm_TIN, RefAdm_FIO, RefAdm_Tel, RefAdm_TypDol) 
 	      values (@inRefAdm_TIN, @inRefAdm_FIO, @inRefAdm_Tel, @inRefAdm_TypDol);
     select @outId=coalesce(IDENT_CURRENT ('RefAdm'),0);

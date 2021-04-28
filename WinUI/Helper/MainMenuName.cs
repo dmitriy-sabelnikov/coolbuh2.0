@@ -48,7 +48,8 @@ namespace WinUI.Helper
         public static string ReportUST         = "ReportUST";         //1.7.   ЕСВ
         public static string ReportDF          = "ReportDF";          //1.8.   1 ДФ
         public static string AnlCalcStatement  = "AnlCalcStatement";  //1.9.   Аналитическая расчетная ведомость
-        public static string Report            = "Report";            //1.10.  Звіти
+        public static string UnionReport       = "UnionReport";       //1.10.  Объединенная отчетность             
+        public static string Report            = "Report";            //1.11.  Звіти
         //================================                      
         public static string Close             = "Close";             //2      Выход
     }

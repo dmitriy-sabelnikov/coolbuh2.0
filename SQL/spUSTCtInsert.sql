@@ -12,6 +12,8 @@ Create Procedure [dbo].[spUSTCtInsert]
     @outId                  int output
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
     insert into USTCt (USTCt_Date, USTCt_Nmr, USTCt_Nm, USTCt_DateClc, USTCt_Flg) 
 	      values (@inUSTCt_Date, @inUSTCt_Nmr, @inUSTCt_Nm, @inUSTCt_DateClc, @inUSTCt_Flg);
     select @outId=coalesce(IDENT_CURRENT ('USTCt'),0);

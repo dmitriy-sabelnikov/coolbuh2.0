@@ -7,6 +7,8 @@ Create Procedure [dbo].[spPersCardDelete]
 	@inPersCard_Id   int           --id карточки  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
   BEGIN TRANSACTION
     DELETE 
       FROM Child 

@@ -9,13 +9,8 @@ Create Procedure [dbo].[spUST6Delete]
 
 AS                            
 BEGIN
-  BEGIN TRANSACTION
-	DELETE 
+        DELETE 
 	  FROM UST6
 	 WHERE (UST6_Id = @inUST6_Id or @inUST6_Id = 0)
            and (UST6_USTCt_Id = @inUST6_USTCt_Id or @inUST6_USTCt_Id = 0);
-  IF(@@error <> 0)
-    ROLLBACK TRANSACTION
-  ELSE 
-    COMMIT TRANSACTION;
 END

@@ -11,6 +11,8 @@ Create Procedure [dbo].[spChildUpdate]
     @inChild_Count        int    --количество
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE Child SET
 	  Child_PersCard_Id     = @inChild_PersCard_Id,
 	  Child_PerBeg	        = @inChild_PerBeg, 

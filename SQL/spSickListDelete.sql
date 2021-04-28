@@ -7,6 +7,8 @@ Create Procedure [dbo].[spSickListDelete]
 	@inSickList_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM SickList
 	 WHERE SickList_Id = @inSickList_Id;

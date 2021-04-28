@@ -7,6 +7,8 @@ Create Procedure [dbo].[spIncTaxDelete]
 	@inIncTax_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM IncTax
 	 WHERE IncTax_Id = @inIncTax_Id;

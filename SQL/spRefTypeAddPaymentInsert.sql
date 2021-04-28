@@ -9,6 +9,8 @@ Create Procedure [dbo].[spRefTypeAddPaymentInsert]
         @outId                    int output
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
     insert into RefTypeAddPayment (RefTypeAddPayment_Cd, RefTypeAddPayment_Nm) values (@inRefTypeAddPayment_Cd, @inRefTypeAddPayment_Nm);
     select @outId=coalesce(IDENT_CURRENT ('RefTypeAddPayment'),0);
 END

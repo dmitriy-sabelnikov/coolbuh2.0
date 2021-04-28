@@ -10,8 +10,10 @@ Create Procedure [dbo].[spDfCtSelect]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM DfCt
+      FROM DfCt (NOLOCK)
      WHERE (DfCt_Id = @inDfCt_Id or @inDfCt_Id = 0)
        and (DfCt_Date between @inDatePerN and @inDatePerK 
         or coalesce(@inDatePerN, '1900-01-01') = '1900-01-01'

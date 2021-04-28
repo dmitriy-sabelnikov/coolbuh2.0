@@ -10,6 +10,8 @@ Create Procedure [dbo].[spRefSpecExpInsert]
         @outId                  int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into RefSpecExp (RefSpecExp_Cd, RefSpecExp_C_PID, RefSpecExp_Name) 
 	                values (@inRefSpecExp_Cd, @inRefSpecExp_C_PID, @inRefSpecExp_Name);
     select @outId=coalesce(IDENT_CURRENT ('RefSpecExp'),0);

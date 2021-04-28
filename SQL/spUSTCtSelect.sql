@@ -10,8 +10,10 @@ Create Procedure [dbo].[spUSTCtSelect]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
     SELECT *
-      FROM USTCt
+      FROM USTCt (NOLOCK)
      WHERE (USTCt_Id = @inUSTCt_Id or @inUSTCt_Id = 0)
        and (USTCt_Date between @inDatePerN and @inDatePerK 
         or coalesce(@inDatePerN, '1900-01-01') = '1900-01-01'

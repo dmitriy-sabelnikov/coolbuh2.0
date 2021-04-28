@@ -9,7 +9,9 @@ Create Procedure [dbo].[spUST6Clc]
 AS   
   Declare @date_ust datetime;                         
 BEGIN
-  select @date_ust = USTCt_Date From USTCt where USTCt_Id = @inUSTCt_Id;
+  SET NOCOUNT ON
+
+  select @date_ust = USTCt_Date From USTCt (NOLOCK) where USTCt_Id = @inUSTCt_Id;
 
   insert into UST6 (UST6_USTCt_Id, UST6_ISUKR, UST6_SEX, UST6_TIN, UST6_LName, UST6_FName, UST6_MName,    
                     UST6_Category_Cd, UST6_Accr_Cd, UST6_Month, UST6_Year, UST6_DisabDays, UST6_NoSalDays, 
@@ -45,30 +47,30 @@ BEGIN
         ,(case when coalesce(cardspec.cd,0) > 0 then 1 else 0 end)   UST6_SpecExp        --ќзнака на€вност≥ спец. стажу (1 Ц так, 0 Ц н≥)        
         ,0                                                           UST6_PWT            --ќзнака неповного робочого часу (1 Ц так, 0 Ц н≥)
 		,0                                                           UST6_NWP            --ќзнака нового робочого м≥сц€ (1 Ц так, 0 Ц н≥)        
-	From PersCard
+	From PersCard (NOLOCK)
 	left join ( select Salary_PersCard_Id, SUM(coalesce(Salary_ResSm,0)) Salary_ResSm
-                  from Salary
+                  from Salary (NOLOCK)
                  where Salary_date = @date_ust
                  group by Salary_PersCard_Id
               ) sal on sal.Salary_PersCard_Id = PersCard.PersCard_Id
     left join (select AddAccr_PersCard_Id, Sum(coalesce(AddAccr_Sm, 0)) AddAccr_Sm 
-                 from AddAccr
+                 from AddAccr (NOLOCK)
                 inner join RefTypeAddAccr on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
                 where (RefTypeAddAccr.RefTypeAddAccr_Flg & 1) > 0
                   and AddAccr_Date  = @date_ust
                 group by AddAccr_PersCard_Id
               ) addAccrClc on addAccrClc.AddAccr_PersCard_Id = PersCard.PersCard_Id
     left join (select Disability_PersCard_Id, MAX(coalesce(Disability_Attr, 0)) Attr
-                From Disability
+                From Disability (NOLOCK)
                where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(Disability_PerBeg, {d'1900-01-01'}) and coalesce(Disability_PerEnd,{d'2500-01-01'})
                group by Disability_PersCard_Id ) disab on disab.Disability_PersCard_Id = PersCard.PersCard_Id 
     left join (select CardStatus_PersCard_Id, MAX(coalesce(CardStatus_Type, 0)) typ
-                 From CardStatus
+                 From CardStatus (NOLOCK)
                 where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(CardStatus_PerBeg, {d'1900-01-01'}) and coalesce(CardStatus_PerEnd,{d'2500-01-01'})
                 group by CardStatus_PersCard_Id ) cardstat on cardstat.CardStatus_PersCard_Id = PersCard.PersCard_Id 
     left join (select CardSpecExp_PersCard_Id, MAX(coalesce(RefSpecExp.RefSpecExp_Cd, 0)) cd
-                 From CardSpecExp
-                inner join RefSpecExp on RefSpecExp.RefSpecExp_Id = CardSpecExp.CardSpecExp_RefSpecExp_Id
+                 From CardSpecExp (NOLOCK)
+                inner join RefSpecExp (NOLOCK) on RefSpecExp.RefSpecExp_Id = CardSpecExp.CardSpecExp_RefSpecExp_Id
                 where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(CardSpecExp_PerBeg, {d'1900-01-01'}) and coalesce(CardSpecExp_PerEnd,{d'2500-01-01'})
                 group by CardSpecExp_PersCard_Id ) cardspec on cardspec.CardSpecExp_PersCard_Id = PersCard.PersCard_Id 
    where coalesce(sal.Salary_ResSm, 0) + coalesce(addAccrClc.AddAccr_Sm, 0) <> 0
@@ -107,19 +109,19 @@ UNION ALL
         ,(case when coalesce(cardspec.cd,0) > 0 then 1 else 0 end)   UST6_SpecExp       --ќзнака на€вност≥ спец. стажу (1 Ц так, 0 Ц н≥)        
         ,0                                                           UST6_PWT            --ќзнака неповного робочого часу (1 Ц так, 0 Ц н≥)
         ,0                                                           UST6_NWP           --ќзнака нового робочого м≥сц€ (1 Ц так, 0 Ц н≥)        
-	From PersCard
+	From PersCard (NOLOCK)
 	inner join Vocation on Vocation_PersCard_Id = PersCard.PersCard_Id and Vocation_Date = @date_ust 
     left join (select Disability_PersCard_Id, MAX(coalesce(Disability_Attr, 0)) Attr
-                 From Disability
+                 From Disability (NOLOCK)
                 where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(Disability_PerBeg, {d'1900-01-01'}) and coalesce(Disability_PerEnd,{d'2500-01-01'})
                 group by Disability_PersCard_Id ) disab on disab.Disability_PersCard_Id = PersCard.PersCard_Id 
     left join (select CardStatus_PersCard_Id, MAX(coalesce(CardStatus_Type, 0)) typ
-                 From CardStatus
+                 From CardStatus (NOLOCK)
                 where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(CardStatus_PerBeg, {d'1900-01-01'}) and coalesce(CardStatus_PerEnd,{d'2500-01-01'})
                 group by CardStatus_PersCard_Id ) cardstat on cardstat.CardStatus_PersCard_Id = PersCard.PersCard_Id 
     left join (select CardSpecExp_PersCard_Id, MAX(coalesce(RefSpecExp.RefSpecExp_Cd, 0)) cd
-                 From CardSpecExp
-                inner join RefSpecExp on RefSpecExp.RefSpecExp_Id = CardSpecExp.CardSpecExp_RefSpecExp_Id
+                 From CardSpecExp (NOLOCK)
+                inner join RefSpecExp (NOLOCK) on RefSpecExp.RefSpecExp_Id = CardSpecExp.CardSpecExp_RefSpecExp_Id
                 where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(CardSpecExp_PerBeg, {d'1900-01-01'}) and coalesce(CardSpecExp_PerEnd,{d'2500-01-01'})
                 group by CardSpecExp_PersCard_Id ) cardspec on cardspec.CardSpecExp_PersCard_Id = PersCard.PersCard_Id 
    where coalesce(Vocation.Vocation_Sm, 0) > 0
@@ -153,15 +155,15 @@ UNION ALL
         ,(case when coalesce(cardspec.cd,0) > 0 then 1 else 0 end)   UST6_SpecExp       --ќзнака на€вност≥ спец. стажу (1 Ц так, 0 Ц н≥)        
         ,0                                                           UST6_PWT            --ќзнака неповного робочого часу (1 Ц так, 0 Ц н≥)
         ,0                                                           UST6_NWP           --ќзнака нового робочого м≥сц€ (1 Ц так, 0 Ц н≥)        
-	From PersCard
-	inner join LawContract on LawContract_PersCard_Id = PersCard.PersCard_Id and LawContract_Date = @date_ust 
+	From PersCard (NOLOCK)
+	inner join LawContract (NOLOCK) on LawContract_PersCard_Id = PersCard.PersCard_Id and LawContract_Date = @date_ust 
     left join (select CardStatus_PersCard_Id, MAX(coalesce(CardStatus_Type, 0)) typ
-                From CardStatus
+                From CardStatus (NOLOCK)
                where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(CardStatus_PerBeg, {d'1900-01-01'}) and coalesce(CardStatus_PerEnd,{d'2500-01-01'})
                group by CardStatus_PersCard_Id ) cardstat on cardstat.CardStatus_PersCard_Id = PersCard.PersCard_Id 
     left join (select CardSpecExp_PersCard_Id, MAX(coalesce(RefSpecExp.RefSpecExp_Cd, 0)) cd
-                 From CardSpecExp
-                inner join RefSpecExp on RefSpecExp.RefSpecExp_Id = CardSpecExp.CardSpecExp_RefSpecExp_Id
+                 From CardSpecExp (NOLOCK)
+                inner join RefSpecExp (NOLOCK) on RefSpecExp.RefSpecExp_Id = CardSpecExp.CardSpecExp_RefSpecExp_Id
                 where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(CardSpecExp_PerBeg, {d'1900-01-01'}) and coalesce(CardSpecExp_PerEnd,{d'2500-01-01'})
                 group by CardSpecExp_PersCard_Id ) cardspec on cardspec.CardSpecExp_PersCard_Id = PersCard.PersCard_Id 
    where coalesce(LawContract_Sm, 0) > 0
@@ -195,15 +197,15 @@ UNION ALL
         ,(case when coalesce(cardspec.cd,0) > 0 then 1 else 0 end)   UST6_SpecExp        --ќзнака на€вност≥ спец. стажу (1 Ц так, 0 Ц н≥)        
         ,0                                                           UST6_PWT            --ќзнака неповного робочого часу (1 Ц так, 0 Ц н≥)
         ,0                                                           UST6_NWP            --ќзнака нового робочого м≥сц€ (1 Ц так, 0 Ц н≥)        
-	From PersCard
-	inner join SickList on SickList_PersCard_Id = PersCard.PersCard_Id and SickList_Date = @date_ust 
+	From PersCard (NOLOCK)
+	inner join SickList (NOLOCK) on SickList_PersCard_Id = PersCard.PersCard_Id and SickList_Date = @date_ust 
     left join (select CardStatus_PersCard_Id, MAX(coalesce(CardStatus_Type, 0)) typ
-                 From CardStatus
+                 From CardStatus (NOLOCK)
                 where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(CardStatus_PerBeg, {d'1900-01-01'}) and coalesce(CardStatus_PerEnd,{d'2500-01-01'})
                 group by CardStatus_PersCard_Id ) cardstat on cardstat.CardStatus_PersCard_Id = PersCard.PersCard_Id 
     left join (select CardSpecExp_PersCard_Id, MAX(coalesce(RefSpecExp.RefSpecExp_Cd, 0)) cd
-                From CardSpecExp
-               inner join RefSpecExp on RefSpecExp.RefSpecExp_Id = CardSpecExp.CardSpecExp_RefSpecExp_Id
+                From CardSpecExp (NOLOCK)
+               inner join RefSpecExp (NOLOCK) on RefSpecExp.RefSpecExp_Id = CardSpecExp.CardSpecExp_RefSpecExp_Id
                where dateadd(dd, -1, dateadd(mm, 1, @date_ust)) between coalesce(CardSpecExp_PerBeg, {d'1900-01-01'}) and coalesce(CardSpecExp_PerEnd,{d'2500-01-01'})
                group by CardSpecExp_PersCard_Id ) cardspec on cardspec.CardSpecExp_PersCard_Id = PersCard.PersCard_Id 
    where coalesce(SickList_ResSm, 0) > 0

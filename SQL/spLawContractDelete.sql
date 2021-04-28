@@ -7,6 +7,8 @@ Create Procedure [dbo].[spLawContractDelete]
 	@inLawContract_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM LawContract
 	 WHERE LawContract_Id = @inLawContract_Id;

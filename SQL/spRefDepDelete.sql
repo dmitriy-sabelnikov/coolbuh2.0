@@ -7,6 +7,8 @@ Create Procedure [dbo].[spRefDepDelete]
 	@inRefDep_Id   int           --id подразделения  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM RefDep
 	 WHERE RefDep_Id = @inRefDep_Id;

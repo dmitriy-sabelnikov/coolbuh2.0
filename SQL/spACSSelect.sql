@@ -7,6 +7,7 @@ Create Procedure [dbo].[spACSSelect]
 	@inDate_Clc  datetime
 AS	             
 BEGIN
+    SET NOCOUNT ON 
 
 select t.PersCard_Id,
        t.PersCard_LName,
@@ -108,11 +109,11 @@ select t.PersCard_Id,
   	SUM(coalesce(list.Payment_Sm           ,0)) list_Sm,
   	SUM(coalesce(inKindPay.Payment_Sm      ,0)) InKindPay_Sm,
   	SUM(coalesce(addPayment.AddPayment_Sm  ,0)) AddPayment_Sm
-   From PersCard
+   From PersCard (NOLOCK)
    LEFT JOIN (select Salary_PersCard_Id, Salary_Date, sum(Salary_KTU) Salary_KTU, sum(Salary_Hours) Salary_Hours, sum(Salary_Days) Salary_Days, sum(Salary_BaseSm)Salary_BaseSm, sum(Salary_PensSm)Salary_PensSm, 
                      sum(Salary_ExpSm)Salary_ExpSm, sum(Salary_GradeSm)Salary_GradeSm, sum(Salary_OthSm)Salary_OthSm,
 					 sum(Salary_KTUSm)Salary_KTUSm, sum(Salary_ResSm) Salary_ResSm  
-               from Salary 
+               from Salary (NOLOCK)
    		 group by Salary_PersCard_Id, Salary_Date) sal 
        on sal.Salary_PersCard_Id = PersCard.PersCard_Id and sal.Salary_Date = @inDate_Clc
    LEFT JOIN (select SickList_PersCard_Id, SickList_Date, 
@@ -121,93 +122,93 @@ select t.PersCard_Id,
                      SUM(SickList_DaysSocInsrnc) SickList_DaysSocInsrnc,
                      SUM(SickList_SmSocInsrnc) SickList_SmSocInsrnc,
                      SUM(SickList_DaysTmpDis)SickList_DaysTmpDis, sum(SickList_ResSm) SickList_ResSm
-               from SickList 
+               from SickList (NOLOCK)
    		 group by SickList_PersCard_Id, SickList_Date) sick 
        on sick.SickList_PersCard_Id = PersCard.PersCard_Id and sick.SickList_Date = @inDate_Clc
 
 
    LEFT JOIN (select Vocation_PersCard_Id, Vocation_Date, SUM(Vocation_Days)Vocation_Days, sum(Vocation_Sm) Vocation_Sm
-               from Vocation 
+               from Vocation (NOLOCK)
    		 group by Vocation_PersCard_Id, Vocation_Date) voc 
        on voc.Vocation_PersCard_Id = PersCard.PersCard_Id and voc.Vocation_Date = @inDate_Clc
    LEFT JOIN (select LawContract_PersCard_Id, LawContract_Date, sum(LawContract_Days) LawContract_Days ,sum(LawContract_Sm) LawContract_Sm
-               from LawContract 
+               from LawContract (NOLOCK) 
    		 group by LawContract_PersCard_Id, LawContract_Date) law 
        on law.LawContract_PersCard_Id = PersCard.PersCard_Id and law.LawContract_Date = @inDate_Clc
    LEFT JOIN (select AddAccr_PersCard_Id, AddAccr_Date, SUM(AddAccr_Sm) AddAccr_Sm
-                from AddAccr
-   		          INNER JOIN RefTypeAddAccr on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
+                from AddAccr (NOLOCK)
+   		          INNER JOIN RefTypeAddAccr (NOLOCK) on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
                 where ((RefTypeAddAccr.RefTypeAddAccr_Flg & 1)>0)
    		  group by AddAccr_PersCard_Id, AddAccr_Date
             ) accrClc 
        on accrClc.AddAccr_PersCard_Id = PersCard.PersCard_Id and accrClc.AddAccr_Date = @inDate_Clc
    LEFT JOIN (select AddAccr_PersCard_Id, AddAccr_Date, SUM(AddAccr_Sm) AddAccr_Sm
-                from AddAccr
-   		          INNER JOIN RefTypeAddAccr on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
+                from AddAccr (NOLOCK)
+   		          INNER JOIN RefTypeAddAccr (NOLOCK) on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
                 where ((RefTypeAddAccr.RefTypeAddAccr_Flg & 1) = 0)
    		  group by AddAccr_PersCard_Id, AddAccr_Date
             ) accrNoClc 
        on accrNoClc.AddAccr_PersCard_Id = PersCard.PersCard_Id and accrNoClc.AddAccr_Date = @inDate_Clc
 LEFT JOIN (select CardStatus_PersCard_Id, coalesce(CardStatus_PerBeg, {d'1900-01-01'}) CardStatus_PerBeg, 
                     coalesce(CardStatus_PerEnd, {d'2500-01-01'}) CardStatus_PerEnd, max(coalesce(CardStatus_Type,0)) CardStatus_Type
-               from CardStatus
+               from CardStatus (NOLOCK)
 			  group by CardStatus_PersCard_Id, coalesce(CardStatus_PerBeg, {d'1900-01-01'}), coalesce(CardStatus_PerEnd, {d'2500-01-01'})
 	  	    ) card_stat	    
             on card_stat.CardStatus_PersCard_Id = PersCard.PersCard_Id and (dateadd(mm, 1, @inDate_Clc)-1) between card_stat.CardStatus_PerBeg and card_stat.CardStatus_PerEnd
   LEFT JOIN (select Child_PersCard_Id, SUM(coalesce(Child_Count,0)) Child_Count
-               from Child
+               from Child (NOLOCK)
               where (dateadd(mm, 1, @inDate_Clc)-1) between coalesce(Child_PerBeg, {d'1900-01-01'}) and coalesce(Child_PerEnd, {d'2500-01-01'})
 			  group by Child_PersCard_Id
 	  	    ) children	    
             on children.Child_PersCard_Id = PersCard.PersCard_Id 
 
   LEFT JOIN (select Disability_PersCard_Id, MAX(coalesce(Disability_Attr,0)) Disability_Attr
-               from Disability
+               from Disability (NOLOCK)
               where (dateadd(mm, 1, @inDate_Clc)-1) between coalesce(Disability_PerBeg, {d'1900-01-01'}) and coalesce(Disability_PerEnd, {d'2500-01-01'})
 	   group by Disability_PersCard_Id
 	  	    ) disability	    
             on disability.Disability_PersCard_Id = PersCard.PersCard_Id 
   LEFT JOIN (select TaxRelief_PersCard_Id, MAX(coalesce(TaxRelief_Koef,0)) TaxRelief_Koef
-               from TaxRelief
+               from TaxRelief (NOLOCK)
               where (dateadd(mm, 1, @inDate_Clc)-1) between coalesce(TaxRelief_PerBeg, {d'1900-01-01'}) and coalesce(TaxRelief_PerEnd, {d'2500-01-01'})
 			  group by TaxRelief_PersCard_Id
 	  	    ) tax_rel	    
             on tax_rel.TaxRelief_PersCard_Id = PersCard.PersCard_Id 
   LEFT JOIN (select max(RefSocBenefit_Sm) RefSocBenefit_Sm, max(RefSocBenefit_LimSm) RefSocBenefit_LimSm  
-               from RefSocBenefit
+               from RefSocBenefit (NOLOCK)
 			  where (dateadd(mm, 1, @inDate_Clc)-1) between coalesce(RefSocBenefit_PerBeg, {d'1900-01-01'}) and coalesce(RefSocBenefit_PerEnd, {d'2500-01-01'}) 
 			)soc_benefit on 1 = 1 
   LEFT JOIN SalBalance on SalBalance_PersCard_Id = PersCard.PersCard_Id and SalBalance_Date = @inDate_Clc 
   LEFT JOIN (select IncTax_PersCard_Id, IncTax_Date, sum(IncTax_Sm) IncTax_Sm
-              from IncTax 
+              from IncTax (NOLOCK)
   		 group by IncTax_PersCard_Id, IncTax_Date) incomeTax 
       on incomeTax.IncTax_PersCard_Id = PersCard.PersCard_Id and incomeTax.IncTax_Date = @inDate_Clc
    LEFT JOIN (select Payment_PersCard_Id, Payment_Date, sum(Payment_Sm) Payment_Sm
-               from Payment 
+               from Payment (NOLOCK)
               where Payment_Type = 1
                 and Payment_Date between @inDate_Clc and (dateadd(mm, 1, @inDate_Clc)-1) 
    		 group by Payment_PersCard_Id, Payment_Date) cashBox 
        on cashBox.Payment_PersCard_Id = PersCard.PersCard_Id 
    LEFT JOIN (select Payment_PersCard_Id, Payment_Date, sum(Payment_Sm) Payment_Sm
-               from Payment 
+               from Payment (NOLOCK)
               where Payment_Type = 2
                 and Payment_Date between @inDate_Clc and (dateadd(mm, 1, @inDate_Clc)-1) 
    		 group by Payment_PersCard_Id, Payment_Date) excerpt 
        on excerpt.Payment_PersCard_Id = PersCard.PersCard_Id 
    LEFT JOIN (select Payment_PersCard_Id, Payment_Date, sum(Payment_Sm) Payment_Sm
-               from Payment 
+               from Payment (NOLOCK)
               where Payment_Type = 3
                 and Payment_Date between @inDate_Clc and (dateadd(mm, 1, @inDate_Clc)-1) 
    		 group by Payment_PersCard_Id, Payment_Date) list 
        on list.Payment_PersCard_Id = PersCard.PersCard_Id 
    LEFT JOIN (select Payment_PersCard_Id, Payment_Date, sum(Payment_Sm) Payment_Sm
-               from Payment 
+               from Payment (NOLOCK) 
               where Payment_Type = 4
                 and Payment_Date between @inDate_Clc and (dateadd(mm, 1, @inDate_Clc)-1) 
    		 group by Payment_PersCard_Id, Payment_Date) inKindPay 
        on inKindPay.Payment_PersCard_Id = PersCard.PersCard_Id 
    LEFT JOIN (select AddPayment_PersCard_Id, AddPayment_Date, sum(AddPayment_Sm) AddPayment_Sm
-               from AddPayment 
+               from AddPayment (NOLOCK)
    		 group by AddPayment_PersCard_Id, AddPayment_Date) addPayment 
        on addPayment.AddPayment_PersCard_Id = PersCard.PersCard_Id and addPayment.AddPayment_Date = @inDate_Clc
 GROUP BY PersCard.PersCard_Id, PersCard.PersCard_LName, PersCard.PersCard_FName, 

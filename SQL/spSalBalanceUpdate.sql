@@ -12,6 +12,8 @@ Create Procedure [dbo].[spSalBalanceUpdate]
     @inSalBalance_Flg                   int
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE SalBalance SET
     SalBalance_PersCard_Id           = @inSalBalance_PersCard_Id,
     SalBalance_Date                  = @inSalBalance_Date,

@@ -48,3 +48,14 @@ D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\Interfaces.pdb
 D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\obj\Debug\BLL.dll
 D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\obj\Debug\BLL.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\Microsoft.SqlServer.Types.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\BLL\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll

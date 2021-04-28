@@ -10,6 +10,8 @@ Create Procedure [dbo].[spRefTypeAddAccrUpdate]
     @inRefTypeAddAccr_Flg            int
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
 	UPDATE RefTypeAddAccr SET
            RefTypeAddAccr_Cd  = @inRefTypeAddAccr_Cd,
            RefTypeAddAccr_Nm  = @inRefTypeAddAccr_Nm,

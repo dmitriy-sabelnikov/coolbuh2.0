@@ -381,6 +381,30 @@
     <Compile Include="WinForms\fmSickListEdit.Designer.cs">
       <DependentUpon>fmSickListEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForms\fmUnionReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\fmUnionReport.Designer.cs">
+      <DependentUpon>fmUnionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\fmUnionReportCt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\fmUnionReportCt.Designer.cs">
+      <DependentUpon>fmUnionReportCt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\fmUnionReportCtEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\fmUnionReportCtEdit.Designer.cs">
+      <DependentUpon>fmUnionReportCtEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\fmUnionReportExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\fmUnionReportExport.Designer.cs">
+      <DependentUpon>fmUnionReportExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\fmUST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -617,6 +641,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\fmSickListEdit.resx">
       <DependentUpon>fmSickListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\fmUnionReport.resx">
+      <DependentUpon>fmUnionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\fmUnionReportCt.resx">
+      <DependentUpon>fmUnionReportCt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\fmUnionReportCtEdit.resx">
+      <DependentUpon>fmUnionReportCtEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\fmUnionReportExport.resx">
+      <DependentUpon>fmUnionReportExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\fmUST.resx">
       <DependentUpon>fmUST.cs</DependentUpon>

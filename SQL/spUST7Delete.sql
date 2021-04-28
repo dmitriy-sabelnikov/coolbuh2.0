@@ -9,6 +9,8 @@ Create Procedure [dbo].[spUST7Delete]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
 	DELETE 
 	  FROM UST7
 	 WHERE (UST7_Id = @inUST7_Id or @inUST7_Id = 0)

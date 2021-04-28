@@ -15,3 +15,4 @@ D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\bin\Debug\Entities.dll
 D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\bin\Debug\Entities.pdb
 D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\obj\Debug\Entities.dll
 D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\obj\Debug\Entities.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache

@@ -11,6 +11,8 @@ Create Procedure [dbo].[spCardSpecExpUpdate]
     @inCardSpecExp_RefSpecExp_Id   int	  -- —сылка на справочник спецстажей
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE CardSpecExp SET
 	  CardSpecExp_PersCard_Id       = @inCardSpecExp_PersCard_Id,
 	  CardSpecExp_PerBeg	        = @inCardSpecExp_PerBeg, 

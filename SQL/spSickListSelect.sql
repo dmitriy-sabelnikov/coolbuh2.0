@@ -10,8 +10,10 @@ Create Procedure [dbo].[spSickListSelect]
         @inSickList_DateEnd     date = null   --дата
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM SickList
+      FROM SickList (NOLOCK)
      WHERE (SickList_Id = @inSickList_Id or @inSickList_Id = 0)
        and (SickList_RefDep_Id = @inSickList_RefDep_Id or @inSickList_RefDep_Id = 0)
        and (SickList_Date between @inSickList_DateBeg and @inSickList_DateEnd 

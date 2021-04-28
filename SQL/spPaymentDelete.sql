@@ -7,6 +7,8 @@ Create Procedure [dbo].[spPaymentDelete]
 	@inPayment_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM Payment
 	 WHERE Payment_Id = @inPayment_Id;

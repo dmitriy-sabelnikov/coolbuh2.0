@@ -9,8 +9,10 @@ Create Procedure [dbo].[spCardStatusSelect]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM CardStatus
+      FROM CardStatus (NOLOCK)
      WHERE (CardStatus_Id = @inCardStatus_Id or @inCardStatus_Id = 0) 
        and (CardStatus_PersCard_Id = @inCardStatus_PersCard_Id or @inCardStatus_PersCard_Id = 0)
 END

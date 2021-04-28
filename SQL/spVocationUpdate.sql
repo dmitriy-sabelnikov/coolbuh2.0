@@ -13,6 +13,8 @@ Create Procedure [dbo].[spVocationUpdate]
         @inVocation_PayDate         date
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
 	UPDATE Vocation SET
 	    Vocation_PersCard_Id  = @inVocation_PersCard_Id,
 	    Vocation_RefDep_Id    = @inVocation_RefDep_Id,

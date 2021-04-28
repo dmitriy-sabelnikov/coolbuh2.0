@@ -36,7 +36,8 @@ namespace WinUI
                     node.NodeFont = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0); ;
                     continue;
                 }
-                if (node.Name == MainMenuName.Service || node.Name == MainMenuName.Ref)
+                if (node.Name == MainMenuName.Service || node.Name == MainMenuName.Ref || node.Name == MainMenuName.Personal ||
+                    node.Name == MainMenuName.Accrual || node.Name == MainMenuName.Рaying || node.Name == MainMenuName.Reports)
                 { 
                     node.NodeFont = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
                     continue;
@@ -213,6 +214,13 @@ namespace WinUI
                 SetupProgram.MainMenuName = MainMenuName.AnlCalcStatement;
                 fmAnlCalcStatement anlCalcStatement = new fmAnlCalcStatement(this);
                 anlCalcStatement.ShowDialog();
+                SetupProgram.MainMenuName = MainMenuName.MainMenu;
+            }
+            else if (nameModule == MainMenuName.UnionReport)
+            {
+                SetupProgram.MainMenuName = MainMenuName.UnionReport;
+                fmUnionReportCt unionReportCt = new fmUnionReportCt(this);
+                unionReportCt.ShowDialog();
                 SetupProgram.MainMenuName = MainMenuName.MainMenu;
             }
             else if (nameModule == MainMenuName.Report)

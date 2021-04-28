@@ -13,6 +13,8 @@ Create Procedure [dbo].[spPaymentInsert]
         @outId                       int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into Payment (Payment_PersCard_Id, Payment_Date, Payment_Type, Payment_Amt, Payment_Price, Payment_Sm) 
 	      values (@inPayment_PersCard_Id, @inPayment_Date, @inPayment_Type, @inPayment_Amt, @inPayment_Price, @inPayment_Sm);
     select @outId=coalesce(IDENT_CURRENT ('Payment'),0);

@@ -10,6 +10,8 @@ Create Procedure [dbo].[spRefMinSalaryInsert]
     @outId                           int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into RefMinSalary (RefMinSalary_PerBeg, RefMinSalary_PerEnd, RefMinSalary_Sm) 
 	      values (@inRefMinSalary_PerBeg, @inRefMinSalary_PerEnd, @inRefMinSalary_Sm);
     select @outId=coalesce(IDENT_CURRENT ('RefMinSalary'),0);

@@ -11,6 +11,8 @@ Create Procedure [dbo].[spDisabilityUpdate]
     @inDisability_Attr         int    --Признак
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE Disability SET
 	  Disability_PersCard_Id     = @inDisability_PersCard_Id,
 	  Disability_PerBeg	        = @inDisability_PerBeg, 

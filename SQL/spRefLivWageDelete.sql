@@ -7,6 +7,8 @@ Create Procedure [dbo].[spRefLivWageDelete]
 	@inRefLivWage_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM RefLivWage
 	 WHERE RefLivWage_Id = @inRefLivWage_Id;

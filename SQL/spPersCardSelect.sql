@@ -7,7 +7,9 @@ Create Procedure [dbo].[spPersCardSelect]
 	@inPersCard_Id   int = 0       --id карточки  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM PersCard
+      FROM PersCard (NOLOCK)
      WHERE (PersCard_Id = @inPersCard_Id or @inPersCard_Id = 0) 
 END

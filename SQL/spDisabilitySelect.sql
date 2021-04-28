@@ -9,8 +9,10 @@ Create Procedure [dbo].[spDisabilitySelect]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM Disability
+      FROM Disability (NOLOCK)
      WHERE (Disability_Id = @inDisability_Id or @inDisability_Id = 0) 
        and (Disability_PersCard_Id = @inDisability_PersCard_Id or @inDisability_PersCard_Id = 0)
 END

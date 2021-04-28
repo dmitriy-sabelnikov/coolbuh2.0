@@ -7,7 +7,9 @@ Create Procedure [dbo].[spRefMinSalarySelect]
 	@inRefMinSalary_Id          int = 0          --id   
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM RefMinSalary
+      FROM RefMinSalary (NOLOCK)
      WHERE (RefMinSalary_Id = @inRefMinSalary_Id or @inRefMinSalary_Id = 0)
 END

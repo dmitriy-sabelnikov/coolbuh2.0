@@ -11,6 +11,8 @@ Create Procedure [dbo].[spRefAdmUpdate]
 	@inRefAdm_TypDol    int
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE RefAdm SET
      	   RefAdm_TIN    = @inRefAdm_TIN,
      	   RefAdm_FIO    = @inRefAdm_FIO,

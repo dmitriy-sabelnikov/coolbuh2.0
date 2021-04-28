@@ -7,6 +7,8 @@ Create Procedure [dbo].[spDfCtDelete]
 	@inDfCt_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
   BEGIN TRANSACTION
 	DELETE 
 	  FROM DFRec

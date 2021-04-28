@@ -9,6 +9,8 @@ Create Procedure [dbo].[spDFRecDelete]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM DFRec
 	 WHERE (DFRec_Id = @inDFRec_Id or @inDFRec_Id = 0)

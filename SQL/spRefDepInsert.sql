@@ -9,6 +9,8 @@ Create Procedure [dbo].[spRefDepInsert]
         @outId         int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into RefDep (RefDep_Cd, RefDep_Nm) values (@inRefDep_Cd, @inRefDep_Nm);
     select @outId=coalesce(IDENT_CURRENT ('RefDep'),0);
 END

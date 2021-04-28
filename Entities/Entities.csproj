@@ -52,6 +52,10 @@
     <Compile Include="DFRec.cs" />
     <Compile Include="Disability.cs" />
     <Compile Include="ExportDFRec.cs" />
+    <Compile Include="ExportUnionReportT1.cs" />
+    <Compile Include="ExportUnionReportT2.cs" />
+    <Compile Include="ExportUnionReportT4.cs" />
+    <Compile Include="ExportUnionReportT5.cs" />
     <Compile Include="ExportUST6.cs" />
     <Compile Include="ExportUST7.cs" />
     <Compile Include="IncTax.cs" />
@@ -88,6 +92,11 @@
     <Compile Include="Setup.cs" />
     <Compile Include="SickList.cs" />
     <Compile Include="TaxRelief.cs" />
+    <Compile Include="UnionReportCt.cs" />
+    <Compile Include="UnionReportT1.cs" />
+    <Compile Include="UnionReportT2.cs" />
+    <Compile Include="UnionReportT4.cs" />
+    <Compile Include="UnionReportT5.cs" />
     <Compile Include="UST6.cs" />
     <Compile Include="UST7.cs" />
     <Compile Include="USTCt.cs" />

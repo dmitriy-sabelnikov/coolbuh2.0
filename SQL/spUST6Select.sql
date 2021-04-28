@@ -8,8 +8,10 @@ Create Procedure [dbo].[spUST6Select]
 	@inUST6_USTCt_Id    int = 0           --id каталога
 AS                            
 BEGIN
+  SET NOCOUNT ON
+
     SELECT *
-      FROM UST6
+      FROM UST6 (NOLOCK)
      WHERE (UST6_Id = @inUST6_Id or @inUST6_Id = 0)
        and (UST6_USTCt_Id = @inUST6_USTCt_Id or @inUST6_USTCt_Id = 0)
 END

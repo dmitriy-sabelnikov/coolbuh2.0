@@ -7,6 +7,8 @@ Create Procedure [dbo].[spRefPensAllwncDelete]
 	@inRefPensAllwnc_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM RefPensAllwnc
 	 WHERE RefPensAllwnc_Id = @inRefPensAllwnc_Id;

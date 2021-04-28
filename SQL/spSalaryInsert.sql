@@ -28,6 +28,8 @@ Create Procedure [dbo].[spSalaryInsert]
         @outId                   int output
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
     insert into Salary (Salary_PersCard_Id, Salary_RefDep_Id, Salary_Date, Salary_Days,Salary_Hours, Salary_BaseSm,
 	         Salary_PensId, Salary_PensPct, Salary_PensSm, Salary_ExpId, Salary_ExpPct, Salary_ExpSm, 
                  Salary_GradeId, Salary_GradePct, Salary_GradeSm, Salary_OthId, Salary_OthPct, Salary_OthSm, 

@@ -7,7 +7,9 @@ Create Procedure [dbo].[spRefTypeAddPaymentSelect]
 	@inRefTypeAddPayment_Id   int = 0       --id  
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
     SELECT *
-      FROM RefTypeAddPayment
+      FROM RefTypeAddPayment (NOLOCK)
      WHERE (RefTypeAddPayment_Id = @inRefTypeAddPayment_Id or @inRefTypeAddPayment_Id = 0) 
 END

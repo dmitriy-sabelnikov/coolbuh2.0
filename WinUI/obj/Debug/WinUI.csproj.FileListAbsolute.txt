@@ -268,3 +268,14 @@ D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Debug\WinUI.WinForms.fmPer
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Debug\WinUI.csproj.GenerateResource.Cache
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Debug\Сoolbuh2.0.exe
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Debug\Сoolbuh2.0.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\Microsoft.SqlServer.Types.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll

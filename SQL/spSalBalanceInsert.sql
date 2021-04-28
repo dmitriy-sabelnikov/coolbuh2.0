@@ -12,6 +12,8 @@ Create Procedure [dbo].[spSalBalanceInsert]
     @outId                              int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into SalBalance (SalBalance_PersCard_Id, SalBalance_Date, SalBalance_BegMonthSm, SalBalance_EndMonthSm, SalBalance_Flg) 
 	      values (@inSalBalance_PersCard_Id, @inSalBalance_Date, @inSalBalance_BegMonthSm, @inSalBalance_EndMonthSm, @inSalBalance_Flg);
     select @outId=coalesce(IDENT_CURRENT ('SalBalance'),0);

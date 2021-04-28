@@ -7,7 +7,9 @@ Create Procedure [dbo].[spRefLivWageSelect]
 	@inRefLivWage_Id   int = 0       --id   
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM RefLivWage
+      FROM RefLivWage (NOLOCK)
      WHERE (RefLivWage_Id = @inRefLivWage_Id or @inRefLivWage_Id = 0) 
 END

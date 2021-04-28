@@ -11,6 +11,8 @@ Create Procedure [dbo].[spCardStatusUpdate]
     @inCardStatus_Type         int    --Тип статуса
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE CardStatus SET
 	  CardStatus_PersCard_Id     = @inCardStatus_PersCard_Id,
 	  CardStatus_PerBeg	        = @inCardStatus_PerBeg, 

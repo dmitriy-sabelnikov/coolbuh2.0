@@ -20,6 +20,7 @@ AS
   Declare @qrt_end datetime; --конец квартала
   Declare @tmp_dat datetime;
 BEGIN
+  SET NOCOUNT ON 
   --определяем дату начала квартала
   select @qrt_beg = DFCt_Date From DFCt where DFCt_Id = @inDFCt_Id; 
   --определяем дату конца квартала
@@ -44,10 +45,10 @@ BEGIN
   
   --определение социальной льготы
   select @socBenefit_Sm = Max(RefSocBenefit_Sm), @socBenefit_LimSm = Max(RefSocBenefit_LimSM)
-    from RefSocBenefit 
+    from RefSocBenefit (NOLOCK) 
    where @qrt_end between coalesce(RefSocBenefit_PerBeg, {d'1900-01-01'}) and coalesce(RefSocBenefit_PerEnd, {d'2500-01-01'})
   --Определение кода ЕГРПОУ
-  select @USREOU = SetupApp_ValueString from SetupApp where SetupApp_Type = 5;                            
+  select @USREOU = SetupApp_ValueString from SetupApp (NOLOCK) where SetupApp_Type = 5;                            
 
   insert into DFRec (DFRec_DFCt_Id, DFRec_USREOU, DFRec_Type, DFRec_FName, DFRec_MName, DFRec_LName, 
                      DFRec_TIN, DFRec_AccrIncSm, DFRec_PaidIncSm, DFRec_AccrTaxSm, DFRec_TransfTaxSm, 
@@ -55,21 +56,21 @@ BEGIN
 					 DFRec_Flg 
 					 )
    (select @inDFCt_Id        DFRec_DFCt_Id,
-          @USREOU           DFRec_USREOU, 
-		  0                 DFRec_Type, 
-		  tt.PersCard_FName DFRec_FName, 
-		  tt.PersCard_MName DFRec_MName, 
-		  tt.PersCard_LName DFRec_LName,
-          tt.PersCard_TIN DFRec_TIN,  
-		  sum(coalesce(tt.s_dox,0)) DFRec_AccrIncSm, 
-		  sum(coalesce(tt.s_nar,0)) DFRec_PaidIncSm, 
-          sum(coalesce(tt.s_taxn,0)) DFRec_AccrTaxSm, 
-		  sum(coalesce(tt.s_taxn,0)) DFRec_TransfTaxSm, 
-		  MAX(ozn_dox) DFRec_IncFlg, 
-		  d_priyn DFRec_DOR, 
-		  d_zviln DFRec_DOD,
-		  MAX(ozn_pilg) DFRec_SocBenefitFlg,
-		  oznaka DFRec_Flg 
+           @USREOU           DFRec_USREOU,             
+	   0                 DFRec_Type,               
+           tt.PersCard_FName DFRec_FName,              
+           tt.PersCard_MName DFRec_MName,              
+           tt.PersCard_LName DFRec_LName,              
+           tt.PersCard_TIN DFRec_TIN,  
+           sum(coalesce(tt.s_dox,0)) DFRec_AccrIncSm, 
+           sum(coalesce(tt.s_nar,0)) DFRec_PaidIncSm, 
+           sum(coalesce(tt.s_taxn,0)) DFRec_AccrTaxSm, 
+           sum(coalesce(tt.s_taxn,0)) DFRec_TransfTaxSm, 
+           MAX(ozn_dox) DFRec_IncFlg, 
+           d_priyn DFRec_DOR, 
+           d_zviln DFRec_DOD,
+           MAX(ozn_pilg) DFRec_SocBenefitFlg,
+           oznaka DFRec_Flg 
    from ( 
      select t.dat, t.PersCard_TIN, t.PersCard_FName, t.PersCard_MName, t.PersCard_LName, t.s_dox, t.s_dox s_nar, t.children, t.koef,  
 	        (case when t.typ = 2 then 2 else 101 end) ozn_dox, t.d_priyn, t.d_zviln, 
@@ -110,27 +111,27 @@ BEGIN
 				  PersCard_DOR d_priyn,
 				  PersCard_DOD d_zviln
 
-             From PersCard
+             From PersCard (NOLOCK)
              inner join #Period on 1 = 1
              LEFT JOIN (select Salary_PersCard_Id, Salary_Date, sum(Salary_ResSm) Salary_ResSm
-                         from Salary 
+                         from Salary (NOLOCK) 
              		 group by Salary_PersCard_Id, Salary_Date) sal 
                  on sal.Salary_PersCard_Id = PersCard.PersCard_Id and sal.Salary_Date = #Period.dat
              LEFT JOIN (select SickList_PersCard_Id, SickList_Date, sum(SickList_ResSm) SickList_ResSm
-                         from SickList 
+                         from SickList (NOLOCK) 
              		 group by SickList_PersCard_Id, SickList_Date) sick 
                  on sick.SickList_PersCard_Id = PersCard.PersCard_Id and sick.SickList_Date = #Period.dat
              LEFT JOIN (select Vocation_PersCard_Id, Vocation_Date, sum(Vocation_Sm) Vocation_Sm
-                         from Vocation 
+                         from Vocation (NOLOCK)
              		 group by Vocation_PersCard_Id, Vocation_Date) voc 
                  on voc.Vocation_PersCard_Id = PersCard.PersCard_Id and voc.Vocation_Date = #Period.dat
              LEFT JOIN (select LawContract_PersCard_Id, LawContract_Date, sum(LawContract_Sm) LawContract_Sm
-                         from LawContract 
+                         from LawContract (NOLOCK)
              		 group by LawContract_PersCard_Id, LawContract_Date) law 
                  on law.LawContract_PersCard_Id = PersCard.PersCard_Id and law.LawContract_Date = #Period.dat
              LEFT JOIN (select AddAccr_PersCard_Id, AddAccr_Date, SUM(AddAccr_Sm) AddAccr_Sm
-                          from AddAccr
-           			   INNER JOIN RefTypeAddAccr on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
+                          from AddAccr (NOLOCK)
+           			   INNER JOIN RefTypeAddAccr (NOLOCK) on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
            			  where (RefTypeAddAccr.RefTypeAddAccr_Flg & 1) > 0
            			  group by AddAccr_PersCard_Id, AddAccr_Date) accr_clc 
            	     on accr_clc.AddAccr_PersCard_Id = PersCard.PersCard_Id and accr_clc.AddAccr_Date = #Period.dat 

@@ -11,6 +11,8 @@ Create Procedure [dbo].[spTaxReliefUpdate]
     @inTaxRelief_Koef         numeric(10,2)  --Коэффициент
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE TaxRelief SET
 	  TaxRelief_PersCard_Id     = @inTaxRelief_PersCard_Id,
 	  TaxRelief_PerBeg	        = @inTaxRelief_PerBeg, 

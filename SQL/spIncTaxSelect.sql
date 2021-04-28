@@ -9,8 +9,10 @@ Create Procedure [dbo].[spIncTaxSelect]
         @inIncTax_DateEnd     date = null       --дата
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM IncTax
+      FROM IncTax (NOLOCK)
      WHERE (IncTax_Id = @inIncTax_Id or @inIncTax_Id = 0)
        and (IncTax_Date between @inIncTax_DateBeg and @inIncTax_DateEnd 
             or coalesce(@inIncTax_DateBeg, '1900-01-01') = '1900-01-01'

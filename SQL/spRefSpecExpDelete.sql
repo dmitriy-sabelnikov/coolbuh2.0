@@ -7,6 +7,8 @@ Create Procedure [dbo].[spRefSpecExpDelete]
 	@inRefSpecExp_Id        int           --id 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM RefSpecExp
 	 WHERE RefSpecExp_Id = @inRefSpecExp_Id;

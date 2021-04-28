@@ -9,6 +9,8 @@ Create Procedure [dbo].[spCardStatusDelete]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM CardStatus
 	 WHERE (CardStatus_Id = @inCardStatus_Id or @inCardStatus_Id = 0)

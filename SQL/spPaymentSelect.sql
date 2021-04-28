@@ -10,8 +10,10 @@ Create Procedure [dbo].[spPaymentSelect]
     @inPayment_DateEnd     date = null   --дата 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM Payment
+      FROM Payment (NOLOCK)
      WHERE (Payment_Id = @inPayment_Id or @inPayment_Id = 0) 
 	   and (Payment_Type = @inPayment_Type or @inPayment_Type = 0)
        and (Payment_Date between @inPayment_DateBeg and @inPayment_DateEnd 

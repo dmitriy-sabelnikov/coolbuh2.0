@@ -11,8 +11,10 @@ Create Procedure [dbo].[spSalBalanceSelect]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM SalBalance
+      FROM SalBalance (NOLOCK)
      WHERE (SalBalance_Id = @inSalBalance_Id or @inSalBalance_Id = 0)
        and (SalBalance_PersCard_Id = @inSalBalance_PersCard_Id or @inSalBalance_PersCard_Id = 0)
        and (SalBalance_Date between @inSalBalance_DateBeg and @inSalBalance_DateEnd 

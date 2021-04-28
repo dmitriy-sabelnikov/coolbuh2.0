@@ -10,6 +10,8 @@ Create Procedure [dbo].[spRefTypeAddAccrInsert]
     @outId                    int output
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
     insert into RefTypeAddAccr (RefTypeAddAccr_Cd, RefTypeAddAccr_Nm, RefTypeAddAccr_Flg) 
 	      values (@inRefTypeAddAccr_Cd, @inRefTypeAddAccr_Nm, @inRefTypeAddAccr_Flg);
     select @outId=coalesce(IDENT_CURRENT ('RefTypeAddAccr'),0);

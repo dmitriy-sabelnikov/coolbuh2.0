@@ -7,7 +7,9 @@ Create Procedure [dbo].[spRefTypeAddAccrSelect]
 	@inRefTypeAddAccr_Id          int = 0          --id   
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
     SELECT *
-      FROM RefTypeAddAccr
+      FROM RefTypeAddAccr (NOLOCK)
      WHERE (RefTypeAddAccr_Id = @inRefTypeAddAccr_Id or @inRefTypeAddAccr_Id = 0);
 END

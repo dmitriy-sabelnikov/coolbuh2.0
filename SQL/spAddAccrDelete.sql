@@ -7,6 +7,8 @@ Create Procedure [dbo].[spAddAccrDelete]
 	@inAddAccr_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM AddAccr
 	 WHERE AddAccr_Id = @inAddAccr_Id;

@@ -13,6 +13,8 @@ Create Procedure [dbo].[spVocationInsert]
         @outId                      int output
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
     insert into Vocation (Vocation_PersCard_Id, Vocation_RefDep_Id, Vocation_Date, Vocation_Days, Vocation_Sm, Vocation_PayDate) 
 	      values (@inVocation_PersCard_Id, @inVocation_RefDep_Id, @inVocation_Date, @inVocation_Days, @inVocation_Sm, @inVocation_PayDate);
     select @outId=coalesce(IDENT_CURRENT ('Vocation'),0);

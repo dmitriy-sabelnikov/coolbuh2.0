@@ -12,6 +12,8 @@ Create Procedure [dbo].[spAddAccrInsert]
     @outId                           int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into AddAccr (AddAccr_PersCard_Id, AddAccr_RefDep_Id, AddAccr_RefTypeAddAccr_Id, AddAccr_Date, AddAccr_Sm) 
 	      values (@inAddAccr_PersCard_Id, @inAddAccr_RefDep_Id, @inAddAccr_RefTypeAddAccr_Id, @inAddAccr_Date, @inAddAccr_Sm);
     select @outId=coalesce(IDENT_CURRENT ('AddAccr'),0);

@@ -91,8 +91,6 @@ D:\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.csproj.GenerateResource.Cache
 D:\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\Сoolbuh2.0.exe
 D:\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\Сoolbuh2.0.pdb
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\Сoolbuh2.0.exe.config
-D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\Сoolbuh2.0.exe
-D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\Сoolbuh2.0.pdb
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\App_Data\Coolbuh.mdf
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\App_Data\Coolbuh_log.ldf
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\Сoolbuh2.0.exe
@@ -117,6 +115,7 @@ D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\Reports.pdb
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\WinFormExtensions.pdb
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\DbfLibrary.pdb
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.csprojResolveAssemblyReference.cache
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.WinForms.fmPassword.resources
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.fmReport.resources
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.Coffee.resources
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.fmMainForm.resources
@@ -182,4 +181,16 @@ D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.WinForms.fmR
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.WinForms.fmRefDepEdit.resources
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.WinForms.fmPersCardChildEdit.resources
 D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.csproj.GenerateResource.Cache
-D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\WinUI.WinForms.fmPassword.resources
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\Сoolbuh2.0.exe
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\obj\Release\Сoolbuh2.0.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\Microsoft.SqlServer.Types.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\de\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\es\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\fr\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\it\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\ja\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\ko\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\pt\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\ru\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+D:\Исходники\coolbuh2.0\coolbuh2.0\WinUI\bin\Release\zh-Hant\Microsoft.SqlServer.Types.resources.dll

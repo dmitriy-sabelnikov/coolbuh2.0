@@ -28,6 +28,8 @@ Create Procedure [dbo].[spSalaryUpdate]
         @inSalary_ResSm          numeric(10,2)      --Итоговая сумма
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
 	UPDATE Salary SET
 	  Salary_PersCard_Id = @inSalary_PersCard_Id,
 	  Salary_RefDep_Id    = @inSalary_RefDep_Id,  

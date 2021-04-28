@@ -10,6 +10,8 @@ Create Procedure [dbo].[spCardSpecExpInsert]
     @inCardSpecExp_RefSpecExp_Id   int	               -- —сылка на справочник спецстажей
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into CardSpecExp (CardSpecExp_PersCard_Id, CardSpecExp_PerBeg, CardSpecExp_PerEnd, CardSpecExp_RefSpecExp_Id) 
 	 values (@inCardSpecExp_PersCard_Id, @inCardSpecExp_PerBeg, @inCardSpecExp_PerEnd, @inCardSpecExp_RefSpecExp_Id);
 END

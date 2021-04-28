@@ -10,8 +10,10 @@ Create Procedure [dbo].[spVocationSelect]
         @inVocation_DateEnd     date = null       --дата
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
     SELECT *
-      FROM Vocation
+      FROM Vocation (NOLOCK)
      WHERE (Vocation_Id = @inVocation_Id or @inVocation_Id = 0)
        and (Vocation_RefDep_Id = @inVocation_RefDep_Id or @inVocation_RefDep_Id = 0)
        and (Vocation_Date between @inVocation_DateBeg and @inVocation_DateEnd 

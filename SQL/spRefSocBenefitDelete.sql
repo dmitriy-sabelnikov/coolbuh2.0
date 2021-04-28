@@ -7,6 +7,8 @@ Create Procedure [dbo].[spRefSocBenefitDelete]
 	@inRefSocBenefit_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM RefSocBenefit
 	 WHERE RefSocBenefit_Id = @inRefSocBenefit_Id;

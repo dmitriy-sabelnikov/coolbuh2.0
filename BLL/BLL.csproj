@@ -45,6 +45,7 @@
     <Compile Include="CheckTIN.cs" />
     <Compile Include="ConvertDbfToSql.cs" />
     <Compile Include="ExportDF.cs" />
+    <Compile Include="ExportUnionReport.cs" />
     <Compile Include="ExportUST.cs" />
     <Compile Include="GetFilesFromPath.cs" />
     <Compile Include="Password.cs" />

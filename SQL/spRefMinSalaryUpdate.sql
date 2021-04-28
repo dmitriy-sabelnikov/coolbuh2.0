@@ -10,6 +10,8 @@ Create Procedure [dbo].[spRefMinSalaryUpdate]
     @inRefMinSalary_Sm               numeric(16,2)
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE RefMinSalary SET
       RefMinSalary_PerBeg   = @inRefMinSalary_PerBeg,
       RefMinSalary_PerEnd   = @inRefMinSalary_PerEnd,

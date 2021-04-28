@@ -12,6 +12,8 @@ Create Procedure [dbo].[spRPRConsolidateUSTLaw]
 	@outLawAssFromSm      numeric(10,2) output
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
 select @outLawConstCntWrk = tt.LawConstCntWrk, @outLawTmpCntWrk = tt.LawTmpCntWrk, @outLawAssCntWrk = tt.LawAssCntWrk,
        @outLawConstFromSm = tt.LawConstFromSm, @outLawTmpFromSm = tt.LawTmpFromSm, @outLawAssFromSm = tt.LawAssFromSm
   from (
@@ -25,29 +27,29 @@ select MAX((case when t.stat_type = 1 then t.cnt else 0 end)) LawConstCntWrk,
  select stat_type, 
         SUM(coalesce(sal.Salary_ResSm, 0)+coalesce(law.LawContract_Sm, 0) + coalesce(accr_clc.AddAccr_Sm, 0) + coalesce(voc.Vocation_Sm, 0)) res_sm,
 		count(stat_type) cnt
-   From PersCard
+   From PersCard (NOLOCK)
  inner join (select CardStatus_PersCard_Id ,max(CardStatus_Type) stat_type 
-               from CardStatus 
+               from CardStatus (NOLOCK)
 			  where @inDate_Clc between coalesce(CardStatus_PerBeg, {d'1900-01-01'}) and coalesce(CardStatus_PerEnd, {d'2500-01-01'})
 			  group by CardStatus_PersCard_Id) stat on stat.CardStatus_PersCard_Id = PersCard.PersCard_Id  
    LEFT JOIN (select Salary_PersCard_Id, Salary_Date, sum(Salary_ResSm) Salary_ResSm
-               from Salary 
+               from Salary (NOLOCK)
    		 group by Salary_PersCard_Id, Salary_Date) sal 
        on sal.Salary_PersCard_Id = PersCard.PersCard_Id and sal.Salary_Date = @inDate_Clc
    LEFT JOIN (select SickList_PersCard_Id, SickList_Date, sum(SickList_ResSm) SickList_ResSm
-               from SickList 
+               from SickList (NOLOCK) 
    		 group by SickList_PersCard_Id, SickList_Date) sick 
        on sick.SickList_PersCard_Id = PersCard.PersCard_Id and sick.SickList_Date = @inDate_Clc
    LEFT JOIN (select Vocation_PersCard_Id, Vocation_Date, sum(Vocation_Sm) Vocation_Sm
-               from Vocation 
+               from Vocation (NOLOCK) 
    		 group by Vocation_PersCard_Id, Vocation_Date) voc 
        on voc.Vocation_PersCard_Id = PersCard.PersCard_Id and voc.Vocation_Date = @inDate_Clc
    LEFT JOIN (select LawContract_PersCard_Id, LawContract_Date, sum(LawContract_Sm) LawContract_Sm
-               from LawContract 
+               from LawContract (NOLOCK) 
    		 group by LawContract_PersCard_Id, LawContract_Date) law 
        on law.LawContract_PersCard_Id = PersCard.PersCard_Id and law.LawContract_Date = @inDate_Clc
    LEFT JOIN (select AddAccr_PersCard_Id, AddAccr_Date, SUM(AddAccr_Sm) AddAccr_Sm
-                from AddAccr
+                from AddAccr (NOLOCK)
    		   INNER JOIN RefTypeAddAccr on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
    		  where (RefTypeAddAccr.RefTypeAddAccr_Flg & 1) > 0
    		  group by AddAccr_PersCard_Id, AddAccr_Date) accr_clc 

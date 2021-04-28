@@ -9,6 +9,8 @@ Create Procedure [dbo].[spCardSpecExpDelete]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM CardSpecExp
 	 WHERE (CardSpecExp_Id = @inCardSpecExp_Id or @inCardSpecExp_Id = 0)

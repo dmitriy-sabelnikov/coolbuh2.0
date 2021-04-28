@@ -11,8 +11,10 @@ Create Procedure [dbo].[spSalarySelect]
 
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
     SELECT *
-      FROM Salary
+      FROM Salary (NOLOCK)
      WHERE (Salary_Id = @inSalary_Id or @inSalary_Id = 0)
        and (Salary_RefDep_Id = @inSalary_RefDep_Id or @inSalary_RefDep_Id = 0)
        and (Salary_Date between @inSalary_DateBeg and @inSalary_DateEnd 

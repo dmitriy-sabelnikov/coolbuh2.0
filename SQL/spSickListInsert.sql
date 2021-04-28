@@ -18,10 +18,13 @@ Create Procedure [dbo].[spSickListInsert]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into SickList (SickList_PersCard_Id, SickList_RefDep_Id, SickList_Date, SickList_DaysEntprs,
                           SickList_SmEntprs, SickList_DaysSocInsrnc, SickList_SmSocInsrnc, SickList_PayDate, SickList_DaysTmpDis, SickList_ResSm) 
 	      values (@inSickList_PersCard_Id, @inSickList_RefDep_Id, @inSickList_Date, @inSickList_DaysEntprs, 
                   @inSickList_SmEntprs, @inSickList_DaysSocInsrnc, @inSickList_SmSocInsrnc, @inSickList_PayDate, @inSickList_DaysTmpDis, @inSickList_ResSm)
+
     select @outId=coalesce(IDENT_CURRENT ('SickList'),0);
 END
 

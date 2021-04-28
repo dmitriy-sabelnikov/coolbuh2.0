@@ -7,6 +7,9 @@ Create Procedure [dbo].[spUSTCtDelete]
 	@inUSTCt_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
+    BEGIN TRANSACTION
 	DELETE 
 	  FROM UST6
 	 WHERE UST6_USTCt_Id = @inUSTCt_Id;
@@ -18,4 +21,9 @@ BEGIN
 	DELETE 
 	  FROM USTCt
 	 WHERE USTCt_Id = @inUSTCt_Id;
+  IF(@@error <> 0)
+    ROLLBACK TRANSACTION
+  ELSE 
+    COMMIT TRANSACTION;
+
 END

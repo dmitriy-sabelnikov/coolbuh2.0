@@ -12,6 +12,8 @@ Create Procedure [dbo].[spDfCtInsert]
     @outId                  int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into DfCt (DfCt_Date, DfCt_Nmr, DfCt_Nm, DfCt_DateClc, DfCt_Flg) 
 	      values (@inDfCt_Date, @inDfCt_Nmr, @inDfCt_Nm, @inDfCt_DateClc, @inDfCt_Flg);
     select @outId=coalesce(IDENT_CURRENT ('DfCt'),0);

@@ -10,6 +10,8 @@ Create Procedure [dbo].[spRefLivWageUpdate]
     @inRefLivWage_Sm          numeric(16,2)
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE RefLivWage SET
      	   RefLivWage_PerBeg  = @inRefLivWage_PerBeg,
      	   RefLivWage_PerEnd  = @inRefLivWage_PerEnd,

@@ -19,6 +19,8 @@ Create Procedure [dbo].[spPersCardInsert]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into PersCard (PersCard_FName, PersCard_MName, PersCard_LName, PersCard_TIN, PersCard_Exp, 
       PersCard_Grade, PersCard_DOB, PersCard_DOR, PersCard_DOD, PersCard_DOP, PersCard_SEX) 
 	 values (@inPersCard_FName, @inPersCard_MName, @inPersCard_LName, @inPersCard_TIN, @inPersCard_Exp, @inPersCard_Grade, @inPersCard_DOB, @inPersCard_DOR, 

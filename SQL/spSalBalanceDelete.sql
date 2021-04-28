@@ -7,6 +7,8 @@ Create Procedure [dbo].[spSalBalanceDelete]
 	@inSalBalance_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM SalBalance
 	 WHERE SalBalance_Id = @inSalBalance_Id;

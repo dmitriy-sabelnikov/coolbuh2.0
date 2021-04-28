@@ -10,6 +10,8 @@ Create Procedure [dbo].[spRefLivWageInsert]
     @outId                         int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into RefLivWage (RefLivWage_PerBeg, RefLivWage_PerEnd, RefLivWage_Sm) 
 	      values (@inRefLivWage_PerBeg, @inRefLivWage_PerEnd, @inRefLivWage_Sm);
     select @outId=coalesce(IDENT_CURRENT ('RefLivWage'),0);

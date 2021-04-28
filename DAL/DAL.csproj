@@ -91,6 +91,11 @@
     <Compile Include="SetupAppRepository.cs" />
     <Compile Include="SickListRepository.cs" />
     <Compile Include="TaxReliefRepository.cs" />
+    <Compile Include="UnionReportCtRepository.cs" />
+    <Compile Include="UnionReportT1Repository.cs" />
+    <Compile Include="UnionReportT2Repository.cs" />
+    <Compile Include="UnionReportT4Repository.cs" />
+    <Compile Include="UnionReportT5Repository.cs" />
     <Compile Include="UST7Repository.cs" />
     <Compile Include="UST6Repository.cs" />
     <Compile Include="USTCtRepository.cs" />

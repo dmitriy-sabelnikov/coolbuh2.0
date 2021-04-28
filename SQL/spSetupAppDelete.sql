@@ -7,6 +7,8 @@ Create Procedure [dbo].[spSetupAppDelete]
 	@inSetupApp_Type   int  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM SetupApp
 	 WHERE SetupApp_Type = @inSetupApp_Type;

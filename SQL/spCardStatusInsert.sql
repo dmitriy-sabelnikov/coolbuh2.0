@@ -10,6 +10,8 @@ Create Procedure [dbo].[spCardStatusInsert]
     @inCardStatus_Type        int	               --Тип статуса
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into CardStatus (CardStatus_PersCard_Id, CardStatus_PerBeg, CardStatus_PerEnd, CardStatus_Type) 
 	 values (@inCardStatus_PersCard_Id, @inCardStatus_PerBeg, @inCardStatus_PerEnd, @inCardStatus_Type);
 END

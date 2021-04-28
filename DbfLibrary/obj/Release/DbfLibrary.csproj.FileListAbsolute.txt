@@ -5,6 +5,6 @@ D:\coolbuh2.0\coolbuh2.0\DbfLibrary\obj\Release\DbfLibrary.pdb
 D:\coolbuh2.0\coolbuh2.0\DbfLibrary\obj\Release\DbfLibrary.csprojResolveAssemblyReference.cache
 D:\Исходники\coolbuh2.0\coolbuh2.0\DbfLibrary\bin\Release\DbfLibrary.dll
 D:\Исходники\coolbuh2.0\coolbuh2.0\DbfLibrary\bin\Release\DbfLibrary.pdb
+D:\Исходники\coolbuh2.0\coolbuh2.0\DbfLibrary\obj\Release\DbfLibrary.csprojResolveAssemblyReference.cache
 D:\Исходники\coolbuh2.0\coolbuh2.0\DbfLibrary\obj\Release\DbfLibrary.dll
 D:\Исходники\coolbuh2.0\coolbuh2.0\DbfLibrary\obj\Release\DbfLibrary.pdb
-D:\Исходники\coolbuh2.0\coolbuh2.0\DbfLibrary\obj\Release\DbfLibrary.csprojResolveAssemblyReference.cache

@@ -9,5 +9,7 @@ Create Procedure [dbo].[spSetupAppInsert]
 	@inSetupApp_ValueString nvarchar(250) --символьное значение 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into SetupApp (SetupApp_Type, SetupApp_ValueDigit, SetupApp_ValueString) values (@inSetupApp_Type, @inSetupApp_ValueDigit, @inSetupApp_ValueString);
 END

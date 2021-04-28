@@ -7,6 +7,8 @@ Create Procedure [dbo].[spRefMinSalaryDelete]
 	@inRefMinSalary_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM RefMinSalary
 	 WHERE RefMinSalary_Id = @inRefMinSalary_Id;

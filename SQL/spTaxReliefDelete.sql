@@ -9,6 +9,8 @@ Create Procedure [dbo].[spTaxReliefDelete]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM TaxRelief
 	 WHERE (TaxRelief_Id = @inTaxRelief_Id or @inTaxRelief_Id = 0)

@@ -12,7 +12,9 @@ Create Procedure [dbo].[spUSTCtUpdate]
     @inUSTCt_Flg            int
 AS                            
 BEGIN
-	UPDATE USTCt SET
+    SET NOCOUNT ON
+
+   UPDATE USTCt SET
     USTCt_Date            = @inUSTCt_Date,
     USTCt_Nmr             = @inUSTCt_Nmr,
     USTCt_Nm              = @inUSTCt_Nm,

@@ -9,8 +9,10 @@ Create Procedure [dbo].[spChildSelect]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM Child
+      FROM Child (NOLOCK)
      WHERE (Child_Id = @inChild_Id or @inChild_Id = 0) 
        and (Child_PersCard_Id = @inChild_PersCard_Id or @inChild_PersCard_Id = 0)
 END

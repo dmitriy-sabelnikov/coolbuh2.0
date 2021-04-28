@@ -18,6 +18,8 @@ Create Procedure [dbo].[spPersCardUpdate]
         @inPersCard_SEX          int                 --Пол
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE PersCard SET
 	  PersCard_FName	        = @inPersCard_FName, 
 	  PersCard_MName	        = @inPersCard_MName,   

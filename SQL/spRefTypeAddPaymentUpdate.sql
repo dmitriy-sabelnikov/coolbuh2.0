@@ -9,6 +9,7 @@ Create Procedure [dbo].[spRefTypeAddPaymentUpdate]
 	@inRefTypeAddPayment_Nm   nvarchar(250)  --Наименование 
 AS                            
 BEGIN
+  SET NOCOUNT ON 
 	UPDATE RefTypeAddPayment SET
 		RefTypeAddPayment_Cd   = @inRefTypeAddPayment_Cd, 
 		RefTypeAddPayment_Nm   = @inRefTypeAddPayment_Nm

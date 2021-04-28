@@ -41,10 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnumActionEnterDF.cs" />
+    <Compile Include="EnumActionEnterUnionReport.cs" />
     <Compile Include="EnumActionEnterUST.cs" />
     <Compile Include="EnumCardStatus.cs" />
     <Compile Include="EnumCaseWorld.cs" />
     <Compile Include="EnumExpAllwnc_Flg.cs" />
+    <Compile Include="EnumExportUnionReport.cs" />
     <Compile Include="EnumExportUST.cs" />
     <Compile Include="EnumFormMode.cs" />
     <Compile Include="EnumGradeAllwnc_Flg.cs" />

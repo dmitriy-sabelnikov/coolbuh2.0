@@ -9,6 +9,8 @@ Create Procedure [dbo].[spDisabilityDelete]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	DELETE 
 	  FROM Disability
 	 WHERE (Disability_Id = @inDisability_Id or @inDisability_Id = 0)

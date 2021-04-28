@@ -17,7 +17,9 @@ Create Procedure [dbo].[spSickListUpdate]
     @inSickList_ResSm          numeric(10,2)
 AS                            
 BEGIN
-	UPDATE SickList SET
+    SET NOCOUNT ON 
+
+    UPDATE SickList SET
     SickList_PersCard_Id   = @inSickList_PersCard_Id,
     SickList_RefDep_Id     = @inSickList_RefDep_Id,
     SickList_Date          = @inSickList_Date,

@@ -10,6 +10,8 @@ Create Procedure [dbo].[spDisabilityInsert]
     @inDisability_Attr         int	               --признак
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into Disability (Disability_PersCard_Id, Disability_PerBeg, Disability_PerEnd, Disability_Attr) 
 	 values (@inDisability_PersCard_Id, @inDisability_PerBeg, @inDisability_PerEnd, @inDisability_Attr);
 END

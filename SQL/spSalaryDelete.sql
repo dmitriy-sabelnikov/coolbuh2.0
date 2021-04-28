@@ -7,6 +7,8 @@ Create Procedure [dbo].[spSalaryDelete]
 	@inSalary_Id   int           --id карточки  
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
 	DELETE 
 	  FROM Salary
 	 WHERE Salary_Id = @inSalary_Id;

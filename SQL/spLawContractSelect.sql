@@ -10,8 +10,10 @@ Create Procedure [dbo].[spLawContractSelect]
         @inLawContract_DateEnd     date = null       --дата
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM LawContract
+      FROM LawContract (NOLOCK)
      WHERE (LawContract_Id = @inLawContract_Id or @inLawContract_Id = 0)
        and (LawContract_RefDep_Id = @inLawContract_RefDep_Id or @inLawContract_RefDep_Id = 0)
        and (LawContract_Date between @inLawContract_DateBeg and @inLawContract_DateEnd 

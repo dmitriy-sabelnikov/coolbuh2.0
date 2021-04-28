@@ -14,6 +14,8 @@ DECLARE @id_card integer,
         @tmp_dat datetime;
             
 BEGIN
+  SET NOCOUNT ON 
+
   IF OBJECT_ID('tempdb..#Period') IS NOT NULL
   BEGIN
     DROP TABLE #Period
@@ -97,51 +99,51 @@ SELECT PersCard.PersCard_Id,
 		                and dateadd(d, -1, dateadd(mm, 1, #Period.dat))  between coalesce(CardStatus_PerBeg, {d'1900-01-01'}) and coalesce(CardStatus_PerEnd, {d'2500-01-01'}) 
 	            ),0) status_type,
 		   SUM(coalesce(tax.IncTax_Sm,0)) IncTax_Sm
- FROM PersCard 
+ FROM PersCard (NOLOCK)
  INNER JOIN #Period on 1 = 1
  LEFT JOIN (select Salary_PersCard_Id, Salary_KTU, Salary_Date, sum(Salary_BaseSm)Salary_BaseSm, sum(Salary_PensSm)Salary_PensSm, 
                    sum(Salary_ExpSm)Salary_ExpSm, sum(Salary_GradeSm)Salary_GradeSm, sum(Salary_OthSm)Salary_OthSm,
 			             sum(Salary_KTUSm)Salary_KTUSm, sum(Salary_ResSm) Salary_ResSm  
-             from Salary 
+             from Salary (NOLOCK)
    		       group by Salary_PersCard_Id, Salary_Date, Salary_KTU) sal 
        on sal.Salary_PersCard_Id = PersCard.PersCard_Id and sal.Salary_Date = #Period.dat
 LEFT JOIN (select SickList_PersCard_Id, SickList_Date, sum(SickList_ResSm) SickList_ResSm
-             from SickList 
+             from SickList (NOLOCK)
  		 group by SickList_PersCard_Id, SickList_Date) sick 
      on sick.SickList_PersCard_Id = PersCard.PersCard_Id and sick.SickList_Date = #Period.dat
  LEFT JOIN (select Vocation_PersCard_Id, Vocation_Date, sum(Vocation_Sm) Vocation_Sm
-             from Vocation 
+             from Vocation (NOLOCK)
  		 group by Vocation_PersCard_Id, Vocation_Date) voc 
      on voc.Vocation_PersCard_Id = PersCard.PersCard_Id and voc.Vocation_Date = #Period.dat
  LEFT JOIN (select LawContract_PersCard_Id, LawContract_Date, sum(LawContract_Sm) LawContract_Sm
-             from LawContract 
+             from LawContract (NOLOCK)
  		 group by LawContract_PersCard_Id, LawContract_Date) law 
      on law.LawContract_PersCard_Id = PersCard.PersCard_Id  and law.LawContract_Date = #Period.dat
  
  LEFT JOIN (select AddAccr_PersCard_Id, AddAccr_Date, SUM(AddAccr_Sm) AddAccr_Sm
-              from AddAccr
- 		   INNER JOIN RefTypeAddAccr on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
+              from AddAccr (NOLOCK)
+ 		   INNER JOIN RefTypeAddAccr (NOLOCK) on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
 		   where (RefTypeAddAccr.RefTypeAddAccr_Flg & 1) > 0
  		  group by AddAccr_PersCard_Id, AddAccr_Date ) accr_clc
      on accr_clc.AddAccr_PersCard_Id = PersCard.PersCard_Id and accr_clc.AddAccr_Date = #Period.dat
 
  LEFT JOIN (select AddAccr_PersCard_Id, AddAccr_Date, SUM(AddAccr_Sm) AddAccr_Sm
-              from AddAccr
- 		   INNER JOIN RefTypeAddAccr on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
+              from AddAccr (NOLOCK)
+ 		   INNER JOIN RefTypeAddAccr (NOLOCK) on RefTypeAddAccr.RefTypeAddAccr_Id = AddAccr.AddAccr_RefTypeAddAccr_Id
 		   where (RefTypeAddAccr.RefTypeAddAccr_Flg & 1) = 0
  		  group by AddAccr_PersCard_Id, AddAccr_Date ) accr_noclc
      on accr_noclc.AddAccr_PersCard_Id = PersCard.PersCard_Id and accr_noclc.AddAccr_Date =#Period.dat
  LEFT JOIN (select IncTax_PersCard_Id, IncTax_Date, SUM(IncTax_Sm) IncTax_Sm 
-              From IncTax
+              From IncTax (NOLOCK)
            group by IncTax_PersCard_Id, IncTax_Date ) tax
      on tax.IncTax_PersCard_Id = PersCard.PersCard_Id and tax.IncTax_Date = #Period.dat
 
 LEFt JOIN (select Payment_PersCard_Id, Payment_Date, sum(Payment_Sm) Payment_Sm
-            from Payment
+            from Payment (NOLOCK)
            group by Payment_PersCard_Id, Payment_Date) paym
      on paym.Payment_PersCard_Id = PersCard.PersCard_Id and paym.Payment_Date between #Period.dat and dateadd(d, -1, dateadd(mm, 1, #Period.dat)) 
 LEFt JOIN (select AddPayment_PersCard_Id, AddPayment_Date, sum(AddPayment_Sm) AddPayment_Sm
-            from AddPayment
+            from AddPayment (NOLOCK)
            group by AddPayment_PersCard_Id, AddPayment_Date) addPaym
      on addPaym.AddPayment_PersCard_Id = PersCard.PersCard_Id and addPaym.AddPayment_Date = #Period.dat 
 GROUP BY PersCard.PersCard_Id, #Period.dat
@@ -158,7 +160,7 @@ FETCH NEXT FROM cursor_Balance INTO @id_card, @date_salary, @balance_sm;
 /*Выполняем в цикле перебор строк*/
 WHILE @@FETCH_STATUS = 0
 BEGIN
-  set @prev_sm = (select SalBalance_EndMonthSm from SalBalance where SalBalance_PersCard_Id = @id_card and SalBalance_Date = dateadd(mm, -1, @date_salary));
+  set @prev_sm = (select SalBalance_EndMonthSm from SalBalance (NOLOCK) where SalBalance_PersCard_Id = @id_card and SalBalance_Date = dateadd(mm, -1, @date_salary));
   set @prev_sm = coalesce(@prev_sm, 0);
   print cast (@date_salary as varchar(16));
   print cast (@prev_sm as varchar(10));

@@ -9,6 +9,8 @@ Create Procedure [dbo].[spRefDepUpdate]
 	@inRefDep_Nm   nvarchar(250)  --Наименование подразделения 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE RefDep SET
 		RefDep_Cd   = @inRefDep_Cd, 
 		RefDep_Nm   = @inRefDep_Nm

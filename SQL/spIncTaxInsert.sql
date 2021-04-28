@@ -10,6 +10,8 @@ Create Procedure [dbo].[spIncTaxInsert]
     @outId                     int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into IncTax (IncTax_PersCard_Id, IncTax_Date, IncTax_Sm) 
 	      values (@inIncTax_PersCard_Id, @inIncTax_Date, @inIncTax_Sm);
     select @outId=coalesce(IDENT_CURRENT ('IncTax'),0);

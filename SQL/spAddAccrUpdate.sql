@@ -12,6 +12,8 @@ Create Procedure [dbo].[spAddAccrUpdate]
     @inAddAccr_Sm                    numeric(10,2)
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE AddAccr SET
     AddAccr_PersCard_Id           = @inAddAccr_PersCard_Id,
     AddAccr_RefDep_Id             = @inAddAccr_RefDep_Id,

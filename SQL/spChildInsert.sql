@@ -10,6 +10,8 @@ Create Procedure [dbo].[spChildInsert]
     @inChild_Count        int	               --Количество
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into Child (Child_PersCard_Id, Child_PerBeg, Child_PerEnd, Child_Count) 
 	 values (@inChild_PersCard_Id, @inChild_PerBeg, @inChild_PerEnd, @inChild_Count);
 END

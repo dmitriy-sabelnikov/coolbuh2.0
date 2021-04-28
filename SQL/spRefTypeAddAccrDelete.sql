@@ -7,6 +7,8 @@ Create Procedure [dbo].[spRefTypeAddAccrDelete]
 	@inRefTypeAddAccr_Id   int           --id  
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
 	DELETE 
 	  FROM RefTypeAddAccr
 	 WHERE RefTypeAddAccr_Id = @inRefTypeAddAccr_Id;

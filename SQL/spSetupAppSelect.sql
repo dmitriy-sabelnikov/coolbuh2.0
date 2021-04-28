@@ -7,7 +7,9 @@ Create Procedure [dbo].[spSetupAppSelect]
 	@inSetupApp_Type int = 0  --тип настройки  
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM SetupApp
+      FROM SetupApp (NOLOCK)
      WHERE (SetupApp_Type = @inSetupApp_Type or @inSetupApp_Type = 0) 
 END

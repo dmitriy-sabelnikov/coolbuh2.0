@@ -12,6 +12,8 @@ Create Procedure [dbo].[spDfCtUpdate]
     @inDfCt_Flg            int
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE DfCt SET
     DfCt_Date            = @inDfCt_Date,
     DfCt_Nmr             = @inDfCt_Nmr,

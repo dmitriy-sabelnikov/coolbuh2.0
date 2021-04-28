@@ -7,6 +7,8 @@ Create Procedure [dbo].[spVocationDelete]
 	@inVocation_Id   int           --id  
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
 	DELETE 
 	  FROM Vocation
 	 WHERE Vocation_Id = @inVocation_Id;

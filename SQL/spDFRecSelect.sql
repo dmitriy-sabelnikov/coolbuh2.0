@@ -8,8 +8,10 @@ Create Procedure [dbo].[spDFRecSelect]
 	@inDFRec_DFCt_Id    int = 0           --id каталога
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM DFRec
+      FROM DFRec (NOLOCK)
      WHERE (DFRec_Id = @inDFRec_Id or @inDFRec_Id = 0)
        and (DFRec_DFCt_Id = @inDFRec_DFCt_Id or @inDFRec_DFCt_Id = 0)
 END

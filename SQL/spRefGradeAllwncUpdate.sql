@@ -13,6 +13,8 @@ Create Procedure [dbo].[spRefGradeAllwncUpdate]
     @inRefGradeAllwnc_Flg             int                         --дыруш
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE RefGradeAllwnc SET
            RefGradeAllwnc_Cd         = @inRefGradeAllwnc_Cd,
            RefGradeAllwnc_Nm         = @inRefGradeAllwnc_Nm,

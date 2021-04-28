@@ -7,7 +7,9 @@ Create Procedure [dbo].[spRefSpecExpSelect]
 	@inRefSpecExp_Id int = 0  --id   
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM RefSpecExp
+      FROM RefSpecExp (NOLOCK)
      WHERE (RefSpecExp_Id = @inRefSpecExp_Id or @inRefSpecExp_Id = 0) 
 END

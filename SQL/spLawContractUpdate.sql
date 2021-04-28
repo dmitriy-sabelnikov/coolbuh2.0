@@ -13,6 +13,8 @@ Create Procedure [dbo].[spLawContractUpdate]
     @inLawContract_PayDate        date
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE LawContract SET
            LawContract_PersCard_Id = @inLawContract_PersCard_Id,
            LawContract_RefDep_Id   = @inLawContract_RefDep_Id,

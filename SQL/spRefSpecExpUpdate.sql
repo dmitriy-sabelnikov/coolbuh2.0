@@ -10,6 +10,8 @@ Create Procedure [dbo].[spRefSpecExpUpdate]
 	@inRefSpecExp_Name      nvarchar(250)  --Полное наименование
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE RefSpecExp SET
 		RefSpecExp_Cd        = @inRefSpecExp_Cd, 
 		RefSpecExp_C_PID     = @inRefSpecExp_C_PID,

@@ -11,6 +11,8 @@ Create Procedure [dbo].[spRefSocBenefitInsert]
     @outId                            int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into RefSocBenefit (RefSocBenefit_PerBeg, RefSocBenefit_PerEnd, RefSocBenefit_Sm, RefSocBenefit_LimSm) 
 	      values (@inRefSocBenefit_PerBeg, @inRefSocBenefit_PerEnd, @inRefSocBenefit_Sm, @inRefSocBenefit_LimSm);
     select @outId=coalesce(IDENT_CURRENT ('RefSocBenefit'),0);

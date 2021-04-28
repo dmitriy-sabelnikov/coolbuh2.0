@@ -13,6 +13,8 @@ Create Procedure [dbo].[spLawContractInsert]
     @outId                        int output
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     insert into LawContract (LawContract_PersCard_Id, LawContract_RefDep_Id, LawContract_Date, LawContract_Days, LawContract_Sm, LawContract_PayDate) 
 	      values (@inLawContract_PersCard_Id, @inLawContract_RefDep_Id, @inLawContract_Date, @inLawContract_Days, @inLawContract_Sm, @inLawContract_PayDate);
     select @outId=coalesce(IDENT_CURRENT ('LawContract'),0);

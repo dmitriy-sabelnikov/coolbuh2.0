@@ -10,6 +10,8 @@ Create Procedure [dbo].[spIncTaxUpdate]
     @inIncTax_Sm              numeric(10,2)
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
 	UPDATE IncTax SET
            IncTax_PersCard_Id  = @inIncTax_PersCard_Id,
            IncTax_Date         = @inIncTax_Date,

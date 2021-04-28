@@ -11,6 +11,8 @@ Create Procedure [dbo].[spAddPaymentUpdate]
     @inAddPayment_Sm                    numeric(10,2)
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     UPDATE AddPayment SET
       AddPayment_PersCard_Id           = @inAddPayment_PersCard_Id,
       AddPayment_Date                  = @inAddPayment_Date,

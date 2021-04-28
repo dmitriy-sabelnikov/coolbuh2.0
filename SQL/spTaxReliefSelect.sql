@@ -9,8 +9,10 @@ Create Procedure [dbo].[spTaxReliefSelect]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON 
+
     SELECT *
-      FROM TaxRelief
+      FROM TaxRelief (NOLOCK)
      WHERE (TaxRelief_Id = @inTaxRelief_Id or @inTaxRelief_Id = 0) 
        and (TaxRelief_PersCard_Id = @inTaxRelief_PersCard_Id or @inTaxRelief_PersCard_Id = 0)
 END

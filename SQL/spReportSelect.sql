@@ -6,6 +6,8 @@ GO
 Create Procedure [dbo].[spReportSelect]
 AS                            
 BEGIN
+  SET NOCOUNT ON 
+
     SELECT *
-      FROM Report
+      FROM Report (NOLOCK)
 END

@@ -11,11 +11,14 @@ Create Procedure [dbo].[spAddAccrSelect]
 
 AS                            
 BEGIN
+    SET NOCOUNT ON
+
     SELECT *
-      FROM AddAccr
+      FROM AddAccr (NOLOCK)
      WHERE (AddAccr_Id = @inAddAccr_Id or @inAddAccr_Id = 0)
        and (AddAccr_RefDep_Id = @inAddAccr_RefDep_Id or @inAddAccr_RefDep_Id = 0)
        and (AddAccr_Date between @inAddAccr_DateBeg and @inAddAccr_DateEnd 
             or coalesce(@inAddAccr_DateBeg, '1900-01-01') = '1900-01-01'
             or coalesce(@inAddAccr_DateEnd, '1900-01-01') = '1900-01-01') 
 END
+ 
