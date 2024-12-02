@@ -62,7 +62,7 @@ select t.PersCard_Id,
        dbo.fn_ClcProf(case when t.status_type in (1, 3) then (t.Salary_ResSm + t.SickList_ResSm + t.Vocation_Sm + t.LawContract_Sm + t.AddAccrClc_Sm)  
                            else 0 
                        end) prof_sm,	     
-       dbo.fn_ClcMilitary(t.Salary_ResSm + t.SickList_ResSm + t.Vocation_Sm + t.LawContract_Sm + t.AddAccrClc_Sm) military_sm  
+       dbo.fn_ClcMilitary(t.Salary_ResSm + t.SickList_ResSm + t.Vocation_Sm + t.LawContract_Sm + t.AddAccrClc_Sm, t.dat) military_sm  
   From
 (
 SELECT PersCard.PersCard_Id, 

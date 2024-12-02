@@ -151,7 +151,7 @@ BEGIN
     --Расчет налога и военного сбора
     UPDATE src
        SET src.tax_sm = dbo.fn_ClcTax(src.accr_inc_sm, @socBenefit_Sm, @socBenefit_LimSm, src.tax_koef, src.children),
-           src.war_sm = dbo.fn_ClcMilitary(src.accr_inc_sm)
+           src.war_sm = dbo.fn_ClcMilitary(src.accr_inc_sm, src.dat)
       FROM #UnionReportT2 src
       WHERE ISNULL(src.accr_inc_sm, 0) > 0 
     
